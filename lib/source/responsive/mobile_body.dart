@@ -23,7 +23,11 @@ class MyMobileBody extends StatelessWidget {
       bottomNavigationBar: BottomAppBar(
         child: Row(
           children: [
-            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+            IconButton(
+                icon: const Icon(Icons.menu),
+                onPressed: () {
+                  MaterialLocalizations.of(context).openAppDrawerTooltip;
+                }),
             const Spacer(),
             IconButton(icon: const Icon(Icons.search), onPressed: () {}),
             IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
