@@ -1,39 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:vdf/source/screens/acomodacoes.dart';
-import 'package:vdf/source/screens/menu_drawer.dart';
-import 'package:vdf/source/utils/constants.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vdf/source/responsive/dimensions.dart';
 
-class MyMobileBody extends StatelessWidget {
-  MyMobileBody({Key? key}) : super(key: key);
+class Acomodacoes extends StatefulWidget {
+  const Acomodacoes({super.key});
 
-/*
-  final List<String> imgList = [
-    //'https://www.valedasflores.com/app/cafe.jpg',
-    'https://www.valedasflores.com/app/a2.jpg',
-    'https://www.valedasflores.com/app/lotus.jpg',
-    'https://www.valedasflores.com/app/qu.jpg',
-    // 'https://www.valedasflores.com/app/quarto.jpg'
-  ];
-  */
+  @override
+  State<Acomodacoes> createState() => _AcomodacoesState();
+}
+
+class _AcomodacoesState extends State<Acomodacoes> {
   int _currentIndex = 0;
-
-  final List<MenuData> menu = [
-    MenuData(Icons.hotel, 'Acomodações'),
-    MenuData(Icons.room_service_sharp, 'Serviços'),
-    MenuData(Icons.local_attraction, 'Nova Friburgo'),
-    MenuData(Icons.discount, 'Promoções'),
+  final List<MenuAcomodacoes> menu = [
+    MenuAcomodacoes('assets/acomodacoes/standard-casal/margarida.jpg',
+        'Standard Casal', 'Descricao'),
+    MenuAcomodacoes('assets/acomodacoes/standard-plus/azaleia-2.jpg',
+        'Standard Plus', 'Descricao'),
+    MenuAcomodacoes('assets/acomodacoes/standard-superior/Rosa.jpg',
+        'Standard Superior', 'Descricao'),
+    MenuAcomodacoes('assets/acomodacoes/standard-superior-casal/violeta.jpg',
+        'Standard Superior Casal', 'Descricao'),
   ];
-
-  final List<String> imgList = [
-    'assets/pousada/por-do-sol.jpg',
-    'assets/pousada/por-do-sol-2.jpg',
-    'assets/pousada/por-do-sol-3.jpg',
-  ];
-
-  List boxes = ["ACOMODAÇÕES", "A POUSADA", "NOVAFRIBURGO", "PROMOÇÕES"];
-
   @override
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
@@ -41,21 +30,12 @@ class MyMobileBody extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Image.asset(
-          "assets/logo-med.png",
-          scale: 2,
-        ),
+        //backgroundColor: Colors.black,
+        title: const Text("Acomodações"),
         centerTitle: true,
         elevation: 10,
+        backgroundColor: Color.fromARGB(255, 98, 152, 55),
         //backgroundColor: Colors.cyan[900],
-        shadowColor: Colors.cyan[900],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(100),
-          ),
-          //side: BorderSide(width: 3.0, color: Colors.orange),
-        ),
       ),
       //backgroundColor: corTerciaria,
       // drawer: const MenuDrawer(),
@@ -88,60 +68,37 @@ class MyMobileBody extends StatelessWidget {
                     onPageChanged: (value) {
                       //debugPrint('Page changed: $value');
                     },
-                    height: 350,
+                    height: 250,
                     indicatorRadius: 2,
                     autoPlayInterval: 3000,
                     isLoop: true,
                     children: [
                       Image.asset(
-                        'assets/pousada/fachada.jpg',
+                        'assets/acomodacoes/standard-casal/margarida.jpg',
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/pousada/por-do-sol.jpg',
+                        'assets/acomodacoes/standard-plus/azaleia-2.jpg',
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/pousada/sala2.jpg',
+                        'assets/acomodacoes/standard-superior/begonia.jpg',
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/pousada/por-do-sol-2.jpg',
+                        'assets/acomodacoes/standard-superior/Bouganville.jpg',
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/pousada/jogos.jpg',
+                        'assets/acomodacoes/standard-superior/Bromelia.jpg',
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/pousada/por-do-sol-3.jpg',
+                        'assets/acomodacoes/standard-superior/Rosa.jpg',
                         fit: BoxFit.cover,
                       ),
                     ],
                   ),
-                  /*
-                    AspectRatio(
-                      aspectRatio: 16 / 9,
-                      child: Container(
-                        height: 250,
-                        //color: corPrimaria,
-                        child: Column(
-                          children: [
-                            CarouselSlider(
-                              options: CarouselOptions(),
-                              items: imgList
-                                  .map((item) => Container(
-                                        child: Center(
-                                            child: Image.asset(item,
-                                                fit: BoxFit.cover,
-                                                width: 1000)),
-                                      ))
-                                  .toList(),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),*/
                   GridView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
@@ -149,33 +106,56 @@ class MyMobileBody extends StatelessWidget {
                     itemCount: menu.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 4 / 3,
-                            crossAxisCount: 4,
-                            crossAxisSpacing: 5.0,
-                            mainAxisSpacing: 1.0),
+                      childAspectRatio: 4 / 3,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5.0,
+                      mainAxisSpacing: 1.0,
+                      mainAxisExtent: 180,
+                    ),
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
-                        color: const Color.fromARGB(255, 98, 152, 55),
-                        elevation: 0.9,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 10.0,
+                        margin: const EdgeInsets.all(10.0),
                         child: InkWell(
                           child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                menu[index].icon,
-                                size: 25,
-                                color: Colors.white70,
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                height: 100.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5.0),
+                                  image: DecorationImage(
+                                      image: AssetImage(menu[index].image),
+                                      fit: BoxFit.cover),
+                                ),
                               ),
-                              //SizedBox(height: 20),
-                              Text(
-                                menu[index].title,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 10, color: Colors.white),
-                              )
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      menu[index].title,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          color: Colors.redAccent,
+                                          fontWeight: FontWeight.w800),
+                                    ),
+                                    Text(
+                                      menu[index].description,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                           onTap: () {
@@ -185,9 +165,6 @@ class MyMobileBody extends StatelessWidget {
                         ),
                       );
                     },
-                  ),
-                  Center(
-                    child: Text("Add conteúdo"),
                   ),
                 ],
               ),
@@ -238,10 +215,11 @@ ThemeData _buildShrineTheme() {
   );
 }
 
-class MenuData {
-  MenuData(this.icon, this.title);
-  final IconData icon;
+class MenuAcomodacoes {
+  MenuAcomodacoes(this.image, this.title, this.description);
+  final String image;
   final String title;
+  final String description;
 }
 
 TextTheme _buildShrineTextTheme(TextTheme base) {
