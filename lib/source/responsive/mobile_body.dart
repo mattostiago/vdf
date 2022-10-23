@@ -149,10 +149,11 @@ class MyMobileBody extends StatelessWidget {
                     itemCount: menu.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            childAspectRatio: 4 / 3,
-                            crossAxisCount: 4,
-                            crossAxisSpacing: 5.0,
-                            mainAxisSpacing: 1.0),
+                      childAspectRatio: 4 / 3,
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 5.0,
+                      mainAxisSpacing: 1.0,
+                    ),
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
                         color: const Color.fromARGB(255, 98, 152, 55),
@@ -186,8 +187,79 @@ class MyMobileBody extends StatelessWidget {
                       );
                     },
                   ),
-                  Center(
-                    child: Text("Add conteúdo"),
+                  GridView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 9 / 16,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5.0,
+                      mainAxisSpacing: 1.0,
+                      mainAxisExtent: 110,
+                    ),
+                    children: [
+                      Card(
+                        color: const Color.fromARGB(255, 98, 152, 55),
+                        elevation: 0.9,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: InkWell(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              ImageSlideshow(
+                                indicatorColor: Colors.blue,
+                                onPageChanged: (value) {
+                                  //debugPrint('Page changed: $value');
+                                },
+                                height: 100,
+                                indicatorRadius: 2,
+                                autoPlayInterval: 4000,
+                                isLoop: true,
+                                children: [
+                                  Image.asset(
+                                    'assets/pousada/cafe-3.jpg',
+                                    fit: BoxFit.cover,
+                                  ),
+                                  InkWell(
+                                    child: Image.asset(
+                                      'assets/pousada/cafe-1.jpg',
+                                      fit: BoxFit.cover,
+                                    ),
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: new Text("Cancelamento"),
+                                            content: Text("mensagem"),
+                                            actions: <Widget>[
+                                              new ElevatedButton(
+                                                child: new Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Acomodacoes()));
+                          },
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
