@@ -18,7 +18,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
         'Standard Casal', 'Descricao'),
     MenuAcomodacoes('assets/acomodacoes/standard-plus/azaleia-2.jpg',
         'Standard Plus', 'Descricao'),
-    MenuAcomodacoes('assets/acomodacoes/standard-superior/Rosa.jpg',
+    MenuAcomodacoes('assets/acomodacoes/standard-superior/rosa.jpg',
         'Standard Superior', 'Descricao'),
     MenuAcomodacoes('assets/acomodacoes/standard-superior-casal/violeta.jpg',
         'Standard Superior Casal', 'Descricao'),
@@ -94,7 +94,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
                         fit: BoxFit.cover,
                       ),
                       Image.asset(
-                        'assets/acomodacoes/standard-superior/Rosa.jpg',
+                        'assets/acomodacoes/standard-superior/rosa.jpg',
                         fit: BoxFit.cover,
                       ),
                     ],

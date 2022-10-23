@@ -248,7 +248,62 @@ class MyMobileBody extends StatelessWidget {
                                         },
                                       );
                                     },
-                                  )
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Acomodacoes()));
+                          },
+                        ),
+                      ),
+                      Card(
+                        color: const Color.fromARGB(255, 98, 152, 55),
+                        elevation: 0.9,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: InkWell(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              ImageSlideshow(
+                                indicatorColor: Colors.blue,
+                                onPageChanged: (value) {
+                                  //debugPrint('Page changed: $value');
+                                },
+                                height: 100,
+                                indicatorRadius: 2,
+                                autoPlayInterval: 4000,
+                                isLoop: true,
+                                children: [
+                                  InkWell(
+                                    child: Image.asset(
+                                      'assets/pousada/jogos.jpg',
+                                      fit: BoxFit.cover,
+                                    ),
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: new Text("Cancelamento"),
+                                            content: Text("mensagem"),
+                                            actions: <Widget>[
+                                              new ElevatedButton(
+                                                child: new Text("Ok"),
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
                                 ],
                               ),
                             ],
