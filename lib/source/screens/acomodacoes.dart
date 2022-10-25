@@ -3,6 +3,10 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:vdf/source/responsive/dimensions.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-casal.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-plus.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-superior-casal.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-superior.dart';
 
 class Acomodacoes extends StatefulWidget {
   const Acomodacoes({super.key});
@@ -15,13 +19,13 @@ class _AcomodacoesState extends State<Acomodacoes> {
   int _currentIndex = 0;
   final List<MenuAcomodacoes> menu = [
     MenuAcomodacoes('assets/acomodacoes/standard-casal/margarida.jpg',
-        'Standard Casal', 'Descricao'),
+        'Standard Casal', 'Descricao', StandardCasal()),
     MenuAcomodacoes('assets/acomodacoes/standard-plus/azaleia-2.jpg',
-        'Standard Plus', 'Descricao'),
+        'Standard Plus', 'Descricao', StandardPlus()),
     MenuAcomodacoes('assets/acomodacoes/standard-superior/rosa.jpg',
-        'Standard Superior', 'Descricao'),
+        'Standard Superior', 'Descricao', StandardSuperior()),
     MenuAcomodacoes('assets/acomodacoes/standard-superior-casal/violeta.jpg',
-        'Standard Superior Casal', 'Descricao'),
+        'Standard Superior Casal', 'Descricao', StandardSuperiorCasal()),
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,12 @@ class _AcomodacoesState extends State<Acomodacoes> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        foregroundColor: Colors.white,
         //backgroundColor: Colors.black,
-        title: const Text("Acomodações"),
+        title: const Text(
+          "Acomodações",
+          //style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
         elevation: 10,
         backgroundColor: Color.fromARGB(255, 98, 152, 55),
@@ -160,7 +168,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Acomodacoes()));
+                                builder: (context) => menu[index].classe));
                           },
                         ),
                       );
@@ -216,10 +224,11 @@ ThemeData _buildShrineTheme() {
 }
 
 class MenuAcomodacoes {
-  MenuAcomodacoes(this.image, this.title, this.description);
+  MenuAcomodacoes(this.image, this.title, this.description, this.classe);
   final String image;
   final String title;
   final String description;
+  final classe;
 }
 
 TextTheme _buildShrineTextTheme(TextTheme base) {

@@ -42,17 +42,23 @@ class MyMobileBody extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Image.asset(
-          "assets/logo-med.png",
-          scale: 2,
+        title: InkWell(
+          child: Image.asset(
+            "assets/logo-med.png",
+            scale: 2,
+          ),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => MyMobileBody()));
+          },
         ),
         centerTitle: true,
         elevation: 10,
         //backgroundColor: Colors.cyan[900],
         shadowColor: Colors.cyan[900],
         shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(100),
+          borderRadius: BorderRadius.all(
+            Radius.circular(100),
           ),
           //side: BorderSide(width: 3.0, color: Colors.orange),
         ),
@@ -187,131 +193,129 @@ class MyMobileBody extends StatelessWidget {
                       );
                     },
                   ),
-                  GridView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 9 / 16,
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 5.0,
-                      mainAxisSpacing: 1.0,
-                      mainAxisExtent: 110,
-                    ),
+                  Row(
                     children: [
-                      Card(
-                        color: const Color.fromARGB(255, 98, 152, 55),
-                        elevation: 0.9,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                        child: InkWell(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              ImageSlideshow(
-                                indicatorColor: Colors.blue,
-                                onPageChanged: (value) {
-                                  //debugPrint('Page changed: $value');
-                                },
-                                height: 100,
-                                indicatorRadius: 2,
-                                autoPlayInterval: 4000,
-                                isLoop: true,
-                                children: [
-                                  Image.asset(
-                                    'assets/pousada/cafe-3.jpg',
-                                    fit: BoxFit.cover,
-                                  ),
-                                  InkWell(
-                                    child: Image.asset(
-                                      'assets/pousada/cafe-1.jpg',
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.6,
+                        //height: 100,
+                        //color: Colors.amber,
+                        child: Card(
+                          color: const Color.fromARGB(255, 98, 152, 55),
+                          elevation: 0.9,
+                          child: InkWell(
+                            //borderRadius: BorderRadius.all(),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                ImageSlideshow(
+                                  indicatorColor: Colors.blue,
+                                  onPageChanged: (value) {
+                                    //debugPrint('Page changed: $value');
+                                  },
+                                  height: 100,
+                                  indicatorRadius: 3,
+                                  autoPlayInterval: 4000,
+                                  isLoop: true,
+                                  children: [
+                                    Image.asset(
+                                      'assets/pousada/cafe-3.jpg',
                                       fit: BoxFit.cover,
                                     ),
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: new Text("Cancelamento"),
-                                            content: Text("mensagem"),
-                                            actions: <Widget>[
-                                              new ElevatedButton(
-                                                child: new Text("Ok"),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
+                                    InkWell(
+                                      child: Image.asset(
+                                        'assets/pousada/cafe-1.jpg',
+                                        fit: BoxFit.cover,
+                                      ),
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: const Text("Cancelamento"),
+                                              content: const Text("mensagem"),
+                                              actions: <Widget>[
+                                                ElevatedButton(
+                                                  child: const Text("Ok"),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Acomodacoes()));
+                            },
                           ),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Acomodacoes()));
-                          },
                         ),
                       ),
-                      Card(
-                        color: const Color.fromARGB(255, 98, 152, 55),
-                        elevation: 0.9,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                        child: InkWell(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              ImageSlideshow(
-                                indicatorColor: Colors.blue,
-                                onPageChanged: (value) {
-                                  //debugPrint('Page changed: $value');
-                                },
-                                height: 100,
-                                indicatorRadius: 2,
-                                autoPlayInterval: 4000,
-                                isLoop: true,
-                                children: [
-                                  InkWell(
-                                    child: Image.asset(
-                                      'assets/pousada/jogos.jpg',
-                                      fit: BoxFit.cover,
+                      Container(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        //   height: 100,
+                        // color: Colors.green,
+                        child: Card(
+                          color: const Color.fromARGB(255, 98, 152, 55),
+                          elevation: 0.9,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: InkWell(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                ImageSlideshow(
+                                  indicatorColor: Colors.blue,
+                                  onPageChanged: (value) {
+                                    //debugPrint('Page changed: $value');
+                                  },
+                                  height: 100,
+                                  indicatorRadius: 2,
+                                  autoPlayInterval: 4000,
+                                  isLoop: true,
+                                  children: [
+                                    InkWell(
+                                      child: Image.asset(
+                                        'assets/pousada/jogos.jpg',
+                                        fit: BoxFit.cover,
+                                      ),
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: const Text("Cancelamento"),
+                                              content: const Text("mensagem"),
+                                              actions: <Widget>[
+                                                ElevatedButton(
+                                                  child: const Text("Ok"),
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
                                     ),
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: new Text("Cancelamento"),
-                                            content: Text("mensagem"),
-                                            actions: <Widget>[
-                                              new ElevatedButton(
-                                                child: new Text("Ok"),
-                                                onPressed: () {
-                                                  Navigator.of(context).pop();
-                                                },
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      );
-                                    },
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Acomodacoes()));
+                            },
                           ),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Acomodacoes()));
-                          },
                         ),
                       ),
                     ],
