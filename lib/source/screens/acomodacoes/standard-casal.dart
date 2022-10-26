@@ -311,6 +311,7 @@ class _StandardCasalState extends State<StandardCasal> {
                       height: 120,
                     ),
                   ),
+                  // Generated code for this bottomButtonArea Widget...
                 ],
               ),
             ),

@@ -71,6 +71,10 @@ class _AcomodacoesState extends State<Acomodacoes> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  SizedBox(
+                    height: 70,
+                  ),
+                  /*
                   ImageSlideshow(
                     indicatorColor: Colors.blue,
                     onPageChanged: (value) {
@@ -107,6 +111,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
                       ),
                     ],
                   ),
+                  */
                   GridView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,

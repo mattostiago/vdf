@@ -5,9 +5,14 @@ import 'package:vdf/source/screens/menu_drawer.dart';
 import 'package:vdf/source/utils/constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-class MyMobileBody extends StatelessWidget {
-  MyMobileBody({Key? key}) : super(key: key);
+class MyMobileBody extends StatefulWidget {
+  const MyMobileBody({super.key});
 
+  @override
+  State<MyMobileBody> createState() => _MyMobileBodyState();
+}
+
+class _MyMobileBodyState extends State<MyMobileBody> {
 /*
   final List<String> imgList = [
     //'https://www.valedasflores.com/app/cafe.jpg',
@@ -34,8 +39,17 @@ class MyMobileBody extends StatelessWidget {
 
   List boxes = ["ACOMODAÇÕES", "A POUSADA", "NOVAFRIBURGO", "PROMOÇÕES"];
 
+  DateTime now = DateTime.now();
+
+  DateTimeRange dateRange = DateTimeRange(
+      start: DateTime.now(),
+      end: DateTime(
+          DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
   @override
   Widget build(BuildContext context) {
+    final start = dateRange.start;
+    final end = dateRange.end;
+
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -89,12 +103,58 @@ class MyMobileBody extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: Image.asset(
+                      'assets/pousada/por-do-sol-3.jpg',
+                      fit: BoxFit.cover,
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                  ),
+                  Container(
+                    //  height: MediaQuery.of(context).size.height * 0.1,
+                    // width: MediaQuery.of(context).size.width,
+                    // color: Colors.amber,
+                    decoration: BoxDecoration(
+                      // image: const DecorationImage(image: AssetImage('assets/pousada/por-do-sol-3.jpg')),
+                      border: Border.all(
+                          color: const Color(0xFF000000),
+                          width: 4.0,
+                          style: BorderStyle.solid), //Border.all
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    child: SizedBox(
+                      height: 50,
+                      width: MediaQuery.of(context).size.width,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const SizedBox(width: 10),
+                            Expanded(
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  pickDateRange();
+                                },
+                                child: Text(
+                                  "Check-in: ${start.day}/${start.month}/${start.year}\nCheck-out: ${end.day}/${end.month}/${end.year}",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  /*
                   ImageSlideshow(
                     indicatorColor: Colors.blue,
                     onPageChanged: (value) {
                       //debugPrint('Page changed: $value');
                     },
-                    height: 350,
+                    height: 420,
                     indicatorRadius: 2,
                     autoPlayInterval: 3000,
                     isLoop: true,
@@ -125,6 +185,7 @@ class MyMobileBody extends StatelessWidget {
                       ),
                     ],
                   ),
+                  */
                   /*
                     AspectRatio(
                       aspectRatio: 16 / 9,
@@ -199,6 +260,7 @@ class MyMobileBody extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.6,
                         //height: 100,
                         //color: Colors.amber,
+
                         child: Card(
                           color: const Color.fromARGB(255, 98, 152, 55),
                           elevation: 0.9,
@@ -320,6 +382,13 @@ class MyMobileBody extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Center(
+                    child: Column(
+                      children: [
+                        Text("Teste"),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -358,6 +427,18 @@ class MyMobileBody extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future pickDateRange() async {
+    DateTimeRange? newDateRange = await showDateRangePicker(
+      context: context,
+      initialDateRange: dateRange,
+      firstDate: DateTime(2022),
+      lastDate: DateTime(2100),
+    );
+
+    if (newDateRange == null) return;
+    setState(() => dateRange = newDateRange);
   }
 }
 
