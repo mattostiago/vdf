@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:vdf/source/utils/constants.dart';
 
 class StandardCasal extends StatefulWidget {
   StandardCasal({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class _StandardCasalState extends State<StandardCasal> {
         ),
         centerTitle: true,
         elevation: 10,
-        backgroundColor: Color.fromARGB(255, 98, 152, 55),
+        backgroundColor: corPrimaria,
         //backgroundColor: Colors.cyan[900],
       ),
       body: Column(

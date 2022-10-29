@@ -7,6 +7,7 @@ import 'package:vdf/source/screens/acomodacoes/standard-casal.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-plus.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-superior-casal.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-superior.dart';
+import 'package:vdf/source/utils/constants.dart';
 
 class Acomodacoes extends StatefulWidget {
   const Acomodacoes({super.key});
@@ -42,7 +43,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
         ),
         centerTitle: true,
         elevation: 10,
-        backgroundColor: Color.fromARGB(255, 98, 152, 55),
+        backgroundColor: corPrimaria,
         //backgroundColor: Colors.cyan[900],
       ),
       //backgroundColor: corTerciaria,
@@ -62,8 +63,10 @@ class _AcomodacoesState extends State<Acomodacoes> {
         ),
       ),*/
       floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.calendar_today_rounded), onPressed: () {}),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        child: const Icon(Icons.whatsapp),
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       body: Column(
         children: [
