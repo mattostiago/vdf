@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vdf/source/screens/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:vdf/source/utils/constants.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: HomePage(),
       theme: ThemeData(
-        primarySwatch: Colors.lightGreen,
+        primarySwatch: corPrimaria,
       ),
       routes: {
         '/': (context) => const HomePage(),

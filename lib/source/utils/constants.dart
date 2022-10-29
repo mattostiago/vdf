@@ -13,7 +13,8 @@ Color? corTerciaria = Colors.black; //background
 //Color? corPrimaria = Colors.deepPurple[400];
 //Color? corSecundaria = Colors.deepPurple[300];
 //Color? corTerciaria = Colors.deepPurple[200]; //background
-Color? corPrimaria = Colors.green[800];
+MaterialColor corPrimaria = Colors.green;
+Color? corPadrao = Colors.green[800];
 Color? corSecundaria = Colors.green[100];
 Color? corTerciaria = Colors.transparent; //background
 
