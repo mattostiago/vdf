@@ -18,3 +18,11 @@ Color? corPadrao = Colors.green[800];
 Color? corSecundaria = Colors.green[100];
 Color? corTerciaria = Colors.transparent; //background
 
+//paleta de cores baseado no logo
+Color cor1 = Color(0xFFa5c415);
+Color cor2 = Color(0xFFd8e480);
+Color cor3 = Color(0xFF399734);
+Color cor4 = Color(0xFF589a6a);
+Color cor5 = Color(0xFFa8cca0);
+
+String urlWhatsApp = 'https://api.whatsapp.com/send?phone=5522997886941';

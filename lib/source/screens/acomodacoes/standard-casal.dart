@@ -1,36 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:vdf/source/components/botoes.dart';
+import 'package:vdf/source/components/caixa_dialogo.dart';
+import 'package:vdf/source/models/menu_acomodacoes.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-plus.dart';
+import 'package:vdf/source/screens/acomodacoes/standard-superior.dart';
 import 'package:vdf/source/utils/constants.dart';
 
 class StandardCasal extends StatefulWidget {
   StandardCasal({Key? key}) : super(key: key);
-
   @override
   State<StandardCasal> createState() => _StandardCasalState();
 }
 
 class _StandardCasalState extends State<StandardCasal> {
-  int _indiceAtual = 0;
+  CaixaDialogo caixa = CaixaDialogo();
+  Botoes botao = Botoes();
+  final List<MenuAcomodacoes> menu = [
+    MenuAcomodacoes('assets/acomodacoes/standard-plus/azaleia-2.jpg',
+        'Standard Plus', 'Descricao', StandardPlus()),
+    MenuAcomodacoes('assets/acomodacoes/standard-superior/rosa.jpg',
+        'Standard Superior', 'Descricao', StandardSuperior()),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         foregroundColor: Colors.white,
+        surfaceTintColor: Colors.black,
         //backgroundColor: Colors.black,
         title: const Text(
           "Standard Casal",
           //style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        elevation: 10,
-        backgroundColor: corPrimaria,
-        //backgroundColor: Colors.cyan[900],
+        // backgroundColor: corPrimaria,
+        backgroundColor: Colors.transparent,
+        elevation: 10, //sombra
       ),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.whatsapp),
+          onPressed: () {
+            launchUrl(Uri.parse(urlWhatsApp));
+          }),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         children: [
           ImageSlideshow(
-            indicatorColor: Colors.blue,
+            indicatorColor: cor1,
             onPageChanged: (value) {
               //debugPrint('Page changed: $value');
             },
@@ -88,7 +108,7 @@ class _StandardCasalState extends State<StandardCasal> {
                             color: Colors.black87,
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Padding(
                           padding: const EdgeInsets.only(right: 12),
                           child: InkWell(
@@ -110,7 +130,9 @@ class _StandardCasalState extends State<StandardCasal> {
                               ],
                             ),
                             onTap: () {
-                              retornaDialog(context, "Avaliações",
+                              caixa.caixaSimplesTituloEMensagem(
+                                  context,
+                                  "Avaliações",
                                   "Confira o que os hóspedes estão falando dessa acomodação.");
                             },
                           ),
@@ -118,27 +140,6 @@ class _StandardCasalState extends State<StandardCasal> {
                       ],
                     ),
                   ),
-
-                  /*  Padding(
-              padding: const EdgeInsets.only(
-                left: 8,
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    "DESCRIÇÃO",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),*/
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 12,
@@ -157,6 +158,7 @@ class _StandardCasalState extends State<StandardCasal> {
                       ),
                     ),
                   ),
+                  botao.botaoReservarAgora(context),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 8,
@@ -189,7 +191,7 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                retornaDialog(context, "TV",
+                                caixa.caixaSimplesTituloEMensagem(context, "TV",
                                     "O Standard Casal conta com TV LCD.");
                               },
                               child: const SizedBox(
@@ -213,7 +215,9 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                retornaDialog(context, "Ventilador",
+                                caixa.caixaSimplesTituloEMensagem(
+                                    context,
+                                    "Ventilador",
                                     "O Standard Casal conta ventilador.");
                               },
                               child: const SizedBox(
@@ -228,31 +232,6 @@ class _StandardCasalState extends State<StandardCasal> {
                           ),
                         ),
                       ),
-                      /*
-              Padding(
-                padding: const EdgeInsets.only(left: 12),
-                child: ClipOval(
-                  child: Material(
-                    shape: const CircleBorder(
-                        side: BorderSide(color: Colors.black54)),
-                    child: InkWell(
-                      splashColor: Colors.black45, // Splash color
-                      onTap: () {
-                        retornaDialog(context, "TV",
-                            "O Standard Casal conta com TV LCD.");
-                      },
-                      child: const SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: Icon(
-                          Icons.air,
-                          color: Colors.black54,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),*/
                       Padding(
                         padding: const EdgeInsets.only(left: 12),
                         child: ClipOval(
@@ -262,7 +241,35 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                retornaDialog(context, "Banheiro privativo",
+                                caixa.caixaSimplesTituloEMensagem(
+                                    context,
+                                    "Vista para as Montanhas",
+                                    "Da janela do quarto é possível contemplar toda a exuberância das montanhas de Nova Friburgo.");
+                              },
+                              child: const SizedBox(
+                                width: 40,
+                                height: 40,
+                                child: Icon(
+                                  Icons.photo,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 12),
+                        child: ClipOval(
+                          child: Material(
+                            shape: const CircleBorder(
+                                side: BorderSide(color: Colors.black54)),
+                            child: InkWell(
+                              splashColor: Colors.black45, // Splash color
+                              onTap: () {
+                                caixa.caixaSimplesTituloEMensagem(
+                                    context,
+                                    "Banheiro privativo",
                                     "Banheiro privativo com chuveiro com aquecimento.");
                               },
                               child: const SizedBox(
@@ -286,8 +293,8 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                retornaDialog(context, "Wi-Fi",
-                                    "Wi-Fi grátis disponível.");
+                                caixa.caixaSimplesTituloEMensagem(context,
+                                    "Wi-Fi", "Wi-Fi grátis disponível.");
                               },
                               child: const SizedBox(
                                 width: 40,
@@ -304,41 +311,111 @@ class _StandardCasalState extends State<StandardCasal> {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                      top: 12,
-                    ),
+                    padding: const EdgeInsets.only(top: 12),
                     child: Container(
-                      color: Colors.black12,
-                      height: 120,
-                    ),
+                        color: Colors.black54,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: const [
+                                Padding(
+                                  padding: EdgeInsets.all(8),
+                                  child: Text(
+                                    "Outras acomodações",
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            GridView.builder(
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemCount: menu.length,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                // childAspectRatio: 1,
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 5.0,
+                                mainAxisSpacing: 1.0,
+                                mainAxisExtent: 180,
+                              ),
+                              itemBuilder: (BuildContext context, int index) {
+                                return Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                  elevation: 10.0,
+                                  margin: const EdgeInsets.all(10.0),
+                                  child: InkWell(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
+                                          height: 100.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            image: DecorationImage(
+                                                image: AssetImage(
+                                                    menu[index].image),
+                                                fit: BoxFit.cover),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: const EdgeInsets.all(10.0),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                menu[index].title,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    color: Colors.redAccent,
+                                                    fontWeight:
+                                                        FontWeight.w800),
+                                              ),
+                                              Text(
+                                                menu[index].description,
+                                                maxLines: 3,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  menu[index].classe));
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                            const SizedBox(height: 50),
+                          ],
+                        )),
                   ),
-                  // Generated code for this bottomButtonArea Widget...
                 ],
               ),
             ),
           ),
         ],
       ),
-    );
-  }
-
-  void retornaDialog(BuildContext context, String title, String conteudo) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(title),
-          content: Text(conteudo),
-          actions: <Widget>[
-            ElevatedButton(
-              child: const Text("Ok"),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 }

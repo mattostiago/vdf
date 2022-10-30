@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_map/plugin_api.dart'; // Only import if required functionality is not exposed by default
 
 class MyMobileBody extends StatefulWidget {
   const MyMobileBody({super.key});
@@ -25,8 +28,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
   final List<MenuData> menu = [
     MenuData(Icons.hotel, 'Acomodações'),
-    MenuData(Icons.room_service_sharp, 'Serviços'),
-    MenuData(Icons.local_attraction, 'Nova Friburgo'),
+    MenuData(Icons.photo, 'Fotos'),
+    MenuData(Icons.local_attraction, 'A Pousada'),
     MenuData(Icons.discount, 'Promoções'),
   ];
 
@@ -108,11 +111,56 @@ class _MyMobileBodyState extends State<MyMobileBody> {
               child: Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.5,
-                    child: Image.asset(
-                      'assets/pousada/por-do-sol-3.jpg',
-                      fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.6,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/pousada/por-do-sol-3.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: const EdgeInsets.all(8),
+                          child: ElevatedButton.icon(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.calendar_today_rounded,
+                            ),
+                            label: const Padding(
+                              padding: EdgeInsets.all(10),
+                              child: Text("Reservar agora"),
+                            ),
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  // Change your radius here
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        /*
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              pickDateRange();
+                            },
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                            ),
+                            child: Text(
+                              data,
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),*/
+                      ],
                     ),
                   ),
                   GridView.builder(
@@ -130,7 +178,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                     itemBuilder: (BuildContext context, int index) {
                       return Card(
                         //  color: const Color.fromARGB(255, 98, 152, 55),
-                        color: corPadrao,
+                        color: cor3,
                         elevation: 0.9,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0)),
@@ -170,7 +218,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 
                         child: Card(
                           // color: const Color.fromARGB(255, 98, 152, 55),
-                          color: corPadrao,
+                          color: cor5,
                           elevation: 0.9,
                           child: InkWell(
                             //borderRadius: BorderRadius.all(),
@@ -179,7 +227,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 ImageSlideshow(
-                                  indicatorColor: corPadrao,
+                                  indicatorColor: cor1,
                                   onPageChanged: (value) {
                                     //debugPrint('Page changed: $value');
                                   },
@@ -229,11 +277,47 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                         ),
                       ),
                       Container(
+                        height: 110,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: Card(
+                          color: cor3,
+                          elevation: 0.9,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0)),
+                          child: InkWell(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: const [
+                                Icon(
+                                  Icons.tour_outlined,
+                                  size: 25,
+                                  color: Colors.white70,
+                                ),
+                                //SizedBox(height: 20),
+                                Text(
+                                  "Nova Friburgo",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.white),
+                                )
+                              ],
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Acomodacoes()));
+                            },
+                          ),
+                        ),
+                      ),
+
+                      /*
+                      Container(
                         width: MediaQuery.of(context).size.width * 0.4,
                         //   height: 100,
                         // color: Colors.green,
                         child: Card(
-                          color: corPadrao,
+                          color: cor1,
                           elevation: 0.9,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8.0)),
@@ -243,7 +327,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 ImageSlideshow(
-                                  indicatorColor: Colors.blue,
+                                  indicatorColor: cor1,
                                   onPageChanged: (value) {
                                     //debugPrint('Page changed: $value');
                                   },
@@ -291,74 +375,51 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                           ),
                         ),
                       ),
+                  */
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 0),
+                    padding: const EdgeInsets.only(top: 12),
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: corPadrao,
-                        // image: const DecorationImage(image: AssetImage('assets/pousada/por-do-sol-3.jpg')),
-                        // borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 4, right: 4, top: 4, bottom: 8),
-                            child: Container(
-                              //  height: MediaQuery.of(context).size.height * 0.1,
-                              // width: MediaQuery.of(context).size.width,
-                              // color: Colors.amber,
-
-                              child: SizedBox(
-                                // height: 50,
-                                width: MediaQuery.of(context).size.width,
-                                child: Center(
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      const Center(
-                                        child: Text(
-                                          "Consultar Disponibilidade",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                      SizedBox(
-                                        //width: 200,
-                                        child: Expanded(
-                                          child: ElevatedButton(
-                                            onPressed: () {
-                                              pickDateRange();
-                                            },
-                                            style: ButtonStyle(
-                                              backgroundColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.white),
-                                            ),
-                                            child: Text(
-                                              data,
-                                              style: const TextStyle(
-                                                  color: Colors.black),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      const SizedBox(width: 10),
-                                    ],
+                        color: Colors.black87,
+                        padding: EdgeInsets.only(left: 12, right: 75),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/Logo-v-160.png",
+                                  scale: 5,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(left: 8),
+                                  child: Text(
+                                    "Pousada Vale das Flores",
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
                                   ),
+                                ),
+                              ],
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.only(left: 8),
+                              child: Text(
+                                "Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  //fontWeight: FontWeight.w600,
+                                  color: Colors.white54,
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 10)
-                        ],
-                      ),
-                    ),
+                            const SizedBox(height: 50),
+                          ],
+                        )),
                   ),
                 ],
               ),
