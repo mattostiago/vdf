@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/screens/cafe_da_manha.dart';
 import 'package:vdf/source/screens/fotos.dart';
@@ -11,7 +9,6 @@ import 'package:vdf/source/screens/pousada.dart';
 import 'package:vdf/source/screens/promocoes.dart';
 import 'package:vdf/source/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_map/plugin_api.dart'; // Only import if required functionality is not exposed by default
 
 class MyMobileBody extends StatefulWidget {
   const MyMobileBody({super.key});
@@ -21,17 +18,6 @@ class MyMobileBody extends StatefulWidget {
 }
 
 class _MyMobileBodyState extends State<MyMobileBody> {
-/*
-  final List<String> imgList = [
-    //'https://www.valedasflores.com/app/cafe.jpg',
-    'https://www.valedasflores.com/app/a2.jpg',
-    'https://www.valedasflores.com/app/lotus.jpg',
-    'https://www.valedasflores.com/app/qu.jpg',
-    // 'https://www.valedasflores.com/app/quarto.jpg'
-  ];
-  */
-  int _currentIndex = 0;
-
   final List<MenuData> menu = [
     MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
     MenuData(Icons.photo, 'Fotos', Fotos()),
@@ -78,30 +64,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
           },
         ),
         centerTitle: true,
-        //backgroundColor: Colors.cyan[900],
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(100),
           ),
-          //side: BorderSide(width: 3.0, color: Colors.orange),
         ),
       ),
-      //backgroundColor: corTerciaria,
-      // drawer: const MenuDrawer(),
-      /* bottomNavigationBar: BottomAppBar(
-        child: Row(
-          children: [
-            IconButton(
-                icon: const Icon(Icons.menu),
-                onPressed: () {
-                  MaterialLocalizations.of(context).openAppDrawerTooltip;
-                }),
-            const Spacer(),
-            IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
-          ],
-        ),
-      ),*/
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.whatsapp),
           onPressed: () {
@@ -109,7 +77,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                 Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
           }),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-
       body: Column(
         children: [
           Expanded(
@@ -143,9 +110,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                         ),
                         Container(
                           alignment: AlignmentDirectional.bottomCenter,
-                          // color: Colors.amber,
-                          //width: 100,
-                          //height: 100,
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -154,7 +118,39 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 padding: const EdgeInsets.all(8),
                                 child: ElevatedButton.icon(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    showModalBottomSheet(
+                                      //enableDrag: false,
+                                      isScrollControlled: true,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.vertical(
+                                              top: Radius.circular(20))),
+                                      context: context,
+                                      builder: (context) => Container(
+                                        padding: const EdgeInsets.all(16),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          children: [
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                pickDateRange();
+                                              },
+                                              style: ButtonStyle(
+                                                backgroundColor:
+                                                    MaterialStateProperty.all(
+                                                        Colors.white),
+                                              ),
+                                              child: Text(
+                                                data,
+                                                style: const TextStyle(
+                                                    color: Colors.black),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
                                   icon: const Icon(
                                     Icons.calendar_today_rounded,
                                   ),
@@ -174,22 +170,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                   ),
                                 ),
                               ),
-                              /*
-                        Expanded(
-                          child: ElevatedButton(
-                            onPressed: () {
-                              pickDateRange();
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.white),
-                            ),
-                            child: Text(
-                              data,
-                              style: const TextStyle(color: Colors.black),
-                            ),
-                          ),
-                        ),*/
                             ],
                           ),
                         )
@@ -244,15 +224,10 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                   ),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    //height: 100,
-                    //color: Colors.amber,
-
                     child: Card(
-                      // color: const Color.fromARGB(255, 98, 152, 55),
                       color: cor5,
                       elevation: 0.9,
                       child: InkWell(
-                        //borderRadius: BorderRadius.all(),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -288,7 +263,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                               color: Colors.lime,
                                               borderRadius: BorderRadius.all(
                                                 Radius.circular(8),
-                                                //bottomLeft: Radius.circular(20),
                                               ),
                                             ),
                                             padding: const EdgeInsets.all(4),

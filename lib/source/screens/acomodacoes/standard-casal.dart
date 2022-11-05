@@ -30,7 +30,7 @@ class _StandardCasalState extends State<StandardCasal> {
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         foregroundColor: Colors.white,
-        surfaceTintColor: Colors.black,
+        surfaceTintColor: Colors.black54,
         //backgroundColor: Colors.black,
         title: const Text(
           "Standard Casal",
@@ -39,7 +39,7 @@ class _StandardCasalState extends State<StandardCasal> {
         centerTitle: true,
         // backgroundColor: corPrimaria,
         backgroundColor: Colors.transparent,
-        elevation: 10, //sombra
+        elevation: 8, //sombra
       ),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.whatsapp),
