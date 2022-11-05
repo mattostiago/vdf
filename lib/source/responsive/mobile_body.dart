@@ -111,40 +111,62 @@ class _MyMobileBodyState extends State<MyMobileBody> {
               child: Column(
                 children: [
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.6,
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/pousada/por-do-sol-3.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    height: (MediaQuery.of(context).size.height * 0.6) + 25,
+                    child: Stack(
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width,
-                          padding: const EdgeInsets.all(8),
-                          child: ElevatedButton.icon(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.calendar_today_rounded,
-                            ),
-                            label: const Padding(
-                              padding: EdgeInsets.all(10),
-                              child: Text("Reservar agora"),
-                            ),
-                            style: ButtonStyle(
-                              shape: MaterialStateProperty.all(
-                                RoundedRectangleBorder(
-                                  // Change your radius here
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
+                          height: MediaQuery.of(context).size.height * 0.6,
+                          decoration: const BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black,
+                                blurRadius: 10,
                               ),
+                            ],
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                            image: DecorationImage(
+                              image:
+                                  AssetImage("assets/pousada/por-do-sol-3.jpg"),
+                              fit: BoxFit.cover,
                             ),
                           ),
+                          //child:
                         ),
-                        /*
+                        Container(
+                          alignment: AlignmentDirectional.bottomCenter,
+                          // color: Colors.amber,
+                          //width: 100,
+                          //height: 100,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: MediaQuery.of(context).size.width * 0.7,
+                                padding: const EdgeInsets.all(8),
+                                child: ElevatedButton.icon(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.calendar_today_rounded,
+                                  ),
+                                  label: const Padding(
+                                    padding: EdgeInsets.all(10),
+                                    child: Text("Reservar agora"),
+                                  ),
+                                  style: ButtonStyle(
+                                    shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                        // Change your radius here
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              /*
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
@@ -160,6 +182,9 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                             ),
                           ),
                         ),*/
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
@@ -377,6 +402,52 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                       ),
                   */
                     ],
+                  ),
+                  GridView.builder(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: menu.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 4 / 3,
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 5.0,
+                      mainAxisSpacing: 1.0,
+                    ),
+                    itemBuilder: (BuildContext context, int index) {
+                      return Card(
+                        //  color: const Color.fromARGB(255, 98, 152, 55),
+                        color: cor3,
+                        elevation: 0.9,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0)),
+                        child: InkWell(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                menu[index].icon,
+                                size: 25,
+                                color: Colors.white70,
+                              ),
+                              //SizedBox(height: 20),
+                              Text(
+                                menu[index].title,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 10, color: Colors.white),
+                              )
+                            ],
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Acomodacoes()));
+                          },
+                        ),
+                      );
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 12),
