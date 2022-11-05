@@ -18,6 +18,8 @@ Color? corPadrao = Colors.green[800];
 Color? corSecundaria = Colors.green[100];
 Color? corTerciaria = Colors.transparent; //background
 
+Color corLimao = Colors.lime;
+
 //paleta de cores baseado no logo
 Color cor1 = Color(0xFFa5c415);
 Color cor2 = Color(0xFFd8e480);

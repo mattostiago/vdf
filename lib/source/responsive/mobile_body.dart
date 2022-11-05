@@ -3,6 +3,12 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
+import 'package:vdf/source/screens/cafe_da_manha.dart';
+import 'package:vdf/source/screens/fotos.dart';
+import 'package:vdf/source/screens/jogos.dart';
+import 'package:vdf/source/screens/nova_friburgo.dart';
+import 'package:vdf/source/screens/pousada.dart';
+import 'package:vdf/source/screens/promocoes.dart';
 import 'package:vdf/source/utils/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_map/plugin_api.dart'; // Only import if required functionality is not exposed by default
@@ -27,10 +33,10 @@ class _MyMobileBodyState extends State<MyMobileBody> {
   int _currentIndex = 0;
 
   final List<MenuData> menu = [
-    MenuData(Icons.hotel, 'Acomodações'),
-    MenuData(Icons.photo, 'Fotos'),
-    MenuData(Icons.local_attraction, 'A Pousada'),
-    MenuData(Icons.discount, 'Promoções'),
+    MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
+    MenuData(Icons.photo, 'Fotos', Fotos()),
+    MenuData(Icons.local_attraction, 'A Pousada', Pousada()),
+    MenuData(Icons.discount, 'Promoções', Promocoes()),
   ];
 
   final List<String> imgList = [
@@ -120,7 +126,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                             boxShadow: [
                               BoxShadow(
                                 color: Colors.black,
-                                blurRadius: 10,
+                                blurRadius: 3,
                               ),
                             ],
                             borderRadius: BorderRadius.only(
@@ -157,6 +163,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                     child: Text("Reservar agora"),
                                   ),
                                   style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all(cor1),
                                     shape: MaterialStateProperty.all(
                                       RoundedRectangleBorder(
                                         // Change your radius here
@@ -228,12 +236,192 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                           ),
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Acomodacoes()));
+                                builder: (context) => menu[index].destino));
                           },
                         ),
                       );
                     },
                   ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    //height: 100,
+                    //color: Colors.amber,
+
+                    child: Card(
+                      // color: const Color.fromARGB(255, 98, 152, 55),
+                      color: cor5,
+                      elevation: 0.9,
+                      child: InkWell(
+                        //borderRadius: BorderRadius.all(),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            ImageSlideshow(
+                              indicatorColor: cor1,
+                              onPageChanged: (value) {
+                                //debugPrint('Page changed: $value');
+                              },
+                              height: MediaQuery.of(context).size.height * 0.2,
+                              indicatorRadius: 3,
+                              autoPlayInterval: 4000,
+                              isLoop: true,
+                              children: [
+                                InkWell(
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        'assets/pousada/cidade.jpg',
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.2,
+                                      ),
+                                      Container(
+                                          padding: const EdgeInsets.all(8),
+                                          alignment:
+                                              AlignmentDirectional.bottomStart,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.lime,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                                //bottomLeft: Radius.circular(20),
+                                              ),
+                                            ),
+                                            padding: const EdgeInsets.all(4),
+                                            child: const Text(
+                                              "Nova Friburgo",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  shadows: [
+                                                    Shadow(
+                                                      blurRadius: 10,
+                                                    )
+                                                  ]),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                NovaFriburgo()));
+                                  },
+                                ),
+                                InkWell(
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        'assets/pousada/jogos.jpg',
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.2,
+                                      ),
+                                      Container(
+                                          padding: const EdgeInsets.all(8),
+                                          alignment:
+                                              AlignmentDirectional.bottomStart,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.lime,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                                //bottomLeft: Radius.circular(20),
+                                              ),
+                                            ),
+                                            padding: const EdgeInsets.all(4),
+                                            child: const Text(
+                                              "Jogos",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  shadows: [
+                                                    Shadow(
+                                                      blurRadius: 10,
+                                                    )
+                                                  ]),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) => Jogos()));
+                                  },
+                                ),
+                                InkWell(
+                                  child: Stack(
+                                    children: [
+                                      Image.asset(
+                                        'assets/pousada/cafe-1.jpg',
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.2,
+                                      ),
+                                      Container(
+                                          padding: const EdgeInsets.all(8),
+                                          alignment:
+                                              AlignmentDirectional.bottomStart,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.lime,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                                //bottomLeft: Radius.circular(20),
+                                              ),
+                                            ),
+                                            padding: const EdgeInsets.all(4),
+                                            child: const Text(
+                                              "Café da manhã ",
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  shadows: [
+                                                    Shadow(
+                                                      blurRadius: 10,
+                                                    )
+                                                  ]),
+                                            ),
+                                          )),
+                                    ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                CafeDaManha()));
+                                  },
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        //onTap: () {  Navigator.of(context).push(MaterialPageRoute(builder: (context) => Fotos())); },
+                      ),
+                    ),
+                  ),
+                  /*
                   Row(
                     children: [
                       Container(
@@ -403,57 +591,14 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                   */
                     ],
                   ),
-                  GridView.builder(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: menu.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      childAspectRatio: 4 / 3,
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 5.0,
-                      mainAxisSpacing: 1.0,
-                    ),
-                    itemBuilder: (BuildContext context, int index) {
-                      return Card(
-                        //  color: const Color.fromARGB(255, 98, 152, 55),
-                        color: cor3,
-                        elevation: 0.9,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8.0)),
-                        child: InkWell(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                menu[index].icon,
-                                size: 25,
-                                color: Colors.white70,
-                              ),
-                              //SizedBox(height: 20),
-                              Text(
-                                menu[index].title,
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                    fontSize: 10, color: Colors.white),
-                              )
-                            ],
-                          ),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Acomodacoes()));
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                  
+                  */
                   Padding(
                     padding: const EdgeInsets.only(top: 12),
                     child: Container(
                         color: Colors.black87,
-                        padding: EdgeInsets.only(left: 12, right: 75),
+                        padding:
+                            const EdgeInsets.only(left: 12, right: 75, top: 15),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -461,7 +606,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               children: [
                                 Image.asset(
                                   "assets/Logo-v-160.png",
-                                  scale: 5,
+                                  scale: 8,
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.only(left: 8),
@@ -469,7 +614,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                     "Pousada Vale das Flores",
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
-                                        fontSize: 20,
+                                        fontSize: 16,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white),
                                   ),
@@ -519,7 +664,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 }
 
 class MenuData {
-  MenuData(this.icon, this.title);
+  MenuData(this.icon, this.title, this.destino);
   final IconData icon;
   final String title;
+  final destino;
 }
