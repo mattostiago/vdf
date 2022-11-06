@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/models/imagem.dart';
 import 'package:vdf/source/screens/detalhes_foto.dart';
@@ -15,6 +16,7 @@ class Fotos extends StatefulWidget {
 
 class _FotosState extends State<Fotos> {
   Modal modal = Modal();
+  Botoes botao = Botoes();
   final List<Imagem> imagem = [
     Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 3", "Descrição3"),
     Imagem("assets/pousada/por-do-sol.jpg", "Pôr do Sol 1", "Descrição1"),
@@ -33,6 +35,7 @@ class _FotosState extends State<Fotos> {
         title: const Text("Fotos"),
         centerTitle: true,
       ),
+      floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
       body: Center(
         child: GridView.builder(
             itemCount: imagem.length,

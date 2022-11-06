@@ -188,7 +188,10 @@ class Modal {
                     )
                   ],
                 ),
-                Text(descricao)
+                Text(
+                  descricao,
+                  textAlign: TextAlign.center,
+                )
               ],
             ),
           ],

@@ -43,11 +43,7 @@ class _StandardCasalState extends State<StandardCasal> {
         backgroundColor: Colors.transparent,
         elevation: 8, //sombra
       ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.whatsapp),
-          onPressed: () {
-            launchUrl(Uri.parse(urlWhatsApp));
-          }),
+      floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         children: [
