@@ -31,6 +31,7 @@ class _FotosState extends State<Fotos> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fotos"),
+        centerTitle: true,
       ),
       body: Center(
         child: GridView.builder(
