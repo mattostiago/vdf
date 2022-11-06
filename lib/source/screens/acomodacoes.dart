@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/models/menu_acomodacoes.dart';
 import 'package:vdf/source/responsive/dimensions.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-casal.dart';
@@ -18,7 +19,7 @@ class Acomodacoes extends StatefulWidget {
 }
 
 class _AcomodacoesState extends State<Acomodacoes> {
-  int _currentIndex = 0;
+  Botoes botao = Botoes();
   final List<MenuAcomodacoes> menu = [
     MenuAcomodacoes('assets/acomodacoes/standard-casal/margarida.jpg',
         'Standard Casal', 'Descricao', StandardCasal()),
@@ -63,21 +64,15 @@ class _AcomodacoesState extends State<Acomodacoes> {
           ],
         ),
       ),*/
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.whatsapp),
-        onPressed: () {},
-      ),
+      floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-
       body: Column(
         children: [
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 70,
-                  ),
+                  const SizedBox(height: 70),
                   /*
                   ImageSlideshow(
                     indicatorColor: Colors.blue,

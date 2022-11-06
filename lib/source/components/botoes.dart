@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vdf/source/components/reservar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Botoes {
   Reservar reservar = Reservar();
@@ -27,6 +28,16 @@ class Botoes {
           ),
         ),
       ),
+    );
+  }
+
+  FloatingActionButton retornaBotaoFlutuanteWhatsApp() {
+    return FloatingActionButton(
+      child: const Icon(Icons.whatsapp),
+      onPressed: () {
+        launchUrl(
+            Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
+      },
     );
   }
 }

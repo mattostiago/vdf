@@ -66,12 +66,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.whatsapp),
-          onPressed: () {
-            launchUrl(
-                Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
-          }),
+      floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         children: [
