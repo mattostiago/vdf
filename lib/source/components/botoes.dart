@@ -5,7 +5,7 @@ class Botoes {
   Reservar reservar = Reservar();
   Container botaoReservarAgora(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.7,
+      width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.all(8),
       child: ElevatedButton.icon(
         onPressed: () {

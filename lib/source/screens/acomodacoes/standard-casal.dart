@@ -132,10 +132,46 @@ class _StandardCasalState extends State<StandardCasal> {
                               ],
                             ),
                             onTap: () {
-                              caixa.caixaSimplesTituloEMensagem(
-                                  context,
-                                  "Avaliações",
-                                  "Confira o que os hóspedes estão falando dessa acomodação.");
+                              modal.chamaModal(
+                                context,
+                                Column(
+                                  children: [
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: const [
+                                        Text(
+                                          "Avaliações",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w700,
+                                            color: Colors.black87,
+                                          ),
+                                        ),
+                                        Spacer(),
+                                        Icon(Icons.star_purple500_sharp,
+                                            color: Colors.amber),
+                                        Icon(Icons.star_purple500_sharp,
+                                            color: Colors.amber),
+                                        Icon(Icons.star_purple500_sharp,
+                                            color: Colors.amber),
+                                        Icon(Icons.star_purple500_sharp,
+                                            color: Colors.amber),
+                                        Icon(Icons.star_half_sharp,
+                                            color: Colors.amber),
+                                        //Text(  "Avaliações", textAlign: TextAlign.center, ),
+                                      ],
+                                    ),
+                                    const SizedBox(height: 50),
+                                    const Text(
+                                        "Veja o que os hóspedes estão falando dessa acomodação.\n\n\n\n\n"),
+                                  ],
+                                ),
+                              );
+                              // caixa.caixaSimplesTituloEMensagem( context,   "Avaliações",  "Confira o que os hóspedes estão falando dessa acomodação.");
                             },
                           ),
                         ),
