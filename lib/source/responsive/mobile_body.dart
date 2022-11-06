@@ -222,10 +222,10 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       Container(
                                           padding: const EdgeInsets.all(8),
                                           alignment:
-                                              AlignmentDirectional.bottomStart,
+                                              AlignmentDirectional.topStart,
                                           child: Container(
                                             decoration: const BoxDecoration(
-                                              color: Colors.lime,
+                                              // color: Colors.lime,
                                               borderRadius: BorderRadius.all(
                                                 Radius.circular(8),
                                               ),
@@ -270,14 +270,17 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       Container(
                                           padding: const EdgeInsets.all(8),
                                           alignment:
-                                              AlignmentDirectional.bottomStart,
+                                              AlignmentDirectional.topStart,
                                           child: Container(
                                             decoration: const BoxDecoration(
-                                              color: Colors.lime,
+                                              // color: Colors.lime,
                                               borderRadius: BorderRadius.all(
                                                 Radius.circular(8),
                                                 //bottomLeft: Radius.circular(20),
                                               ),
+                                              boxShadow: [
+                                                BoxShadow(blurRadius: 35)
+                                              ],
                                             ),
                                             padding: const EdgeInsets.all(4),
                                             child: const Text(
@@ -307,7 +310,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                   child: Stack(
                                     children: [
                                       Image.asset(
-                                        'assets/pousada/cafe-1.jpg',
+                                        'assets/pousada/cafe-2.jpg',
                                         fit: BoxFit.cover,
                                         width:
                                             MediaQuery.of(context).size.width,
@@ -316,28 +319,32 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                 0.2,
                                       ),
                                       Container(
-                                          padding: const EdgeInsets.all(8),
-                                          alignment:
-                                              AlignmentDirectional.topStart,
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                              color: Colors.lime,
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(8),
-                                                //bottomLeft: Radius.circular(20),
-                                              ),
+                                        padding: const EdgeInsets.all(8),
+                                        alignment:
+                                            AlignmentDirectional.topStart,
+                                        child: Container(
+                                          decoration: const BoxDecoration(
+                                            //  color: Colors.lime,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(8),
+                                              //bottomLeft: Radius.circular(20),
                                             ),
-                                            padding: const EdgeInsets.all(4),
-                                            child: const Text(
-                                              "+ Café da manhã ",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Colors.white,
-                                                overflow: TextOverflow.ellipsis,
-                                              ),
+                                            boxShadow: [
+                                              BoxShadow(blurRadius: 35)
+                                            ],
+                                          ),
+                                          padding: const EdgeInsets.all(4),
+                                          child: const Text(
+                                            "Café da manhã ",
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.white,
+                                              overflow: TextOverflow.ellipsis,
                                             ),
-                                          )),
+                                          ),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   onTap: () {
