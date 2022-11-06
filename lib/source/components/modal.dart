@@ -28,6 +28,7 @@ class Modal {
 
   chamaModalImagens(BuildContext context, Imagem imagem) {
     showModalBottomSheet(
+      backgroundColor: Colors.white70,
       //enableDrag: false,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -41,7 +42,7 @@ class Modal {
             const Icon(
               Icons.maximize,
               size: 40,
-              color: Colors.black54,
+              color: Colors.white70,
             ),
             Stack(
               children: [
