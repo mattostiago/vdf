@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:vdf/source/components/botoes.dart';
+import 'package:vdf/source/components/modal.dart';
+import 'package:vdf/source/components/reservar.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/screens/cafe_da_manha.dart';
 import 'package:vdf/source/screens/fotos.dart';
@@ -30,21 +33,13 @@ class _MyMobileBodyState extends State<MyMobileBody> {
     'assets/pousada/por-do-sol-2.jpg',
     'assets/pousada/por-do-sol-3.jpg',
   ];
-
+  Modal modal = Modal();
+  Botoes botao = Botoes();
+  Reservar reservar = Reservar();
   List boxes = ["ACOMODAÇÕES", "A POUSADA", "NOVAFRIBURGO", "PROMOÇÕES"];
 
-  DateTime now = DateTime.now();
-  String data = "Data";
-
-  DateTimeRange dateRange = DateTimeRange(
-      start: DateTime.now(),
-      end: DateTime(
-          DateTime.now().year, DateTime.now().month, DateTime.now().day + 1));
   @override
   Widget build(BuildContext context) {
-    final start = dateRange.start;
-    final end = dateRange.end;
-
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
@@ -118,38 +113,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 padding: const EdgeInsets.all(8),
                                 child: ElevatedButton.icon(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                      //enableDrag: false,
-                                      isScrollControlled: true,
-                                      shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.vertical(
-                                              top: Radius.circular(20))),
-                                      context: context,
-                                      builder: (context) => Container(
-                                        padding: const EdgeInsets.all(16),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                pickDateRange();
-                                              },
-                                              style: ButtonStyle(
-                                                backgroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Colors.white),
-                                              ),
-                                              child: Text(
-                                                data,
-                                                style: const TextStyle(
-                                                    color: Colors.black),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
+                                  onPressed: () async {
+                                    reservar.iniciarConsulta(context);
                                   },
                                   icon: const Icon(
                                     Icons.calendar_today_rounded,
@@ -353,7 +318,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                       Container(
                                           padding: const EdgeInsets.all(8),
                                           alignment:
-                                              AlignmentDirectional.bottomStart,
+                                              AlignmentDirectional.topStart,
                                           child: Container(
                                             decoration: const BoxDecoration(
                                               color: Colors.lime,
@@ -364,18 +329,13 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                             ),
                                             padding: const EdgeInsets.all(4),
                                             child: const Text(
-                                              "Café da manhã ",
+                                              "+ Café da manhã ",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.white,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 10,
-                                                    )
-                                                  ]),
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                                overflow: TextOverflow.ellipsis,
+                                              ),
                                             ),
                                           )),
                                     ],
@@ -597,8 +557,9 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                             ),
                             const Padding(
                               padding: EdgeInsets.only(left: 8),
-                              child: Text(
-                                "Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
+                              child: //Text("Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
+                                  Text(
+                                "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
                                 textAlign: TextAlign.start,
                                 style: TextStyle(
                                   fontSize: 12,
@@ -618,22 +579,6 @@ class _MyMobileBodyState extends State<MyMobileBody> {
         ],
       ),
     );
-  }
-
-  Future pickDateRange() async {
-    DateTimeRange? newDateRange = await showDateRangePicker(
-      context: context,
-      initialDateRange: dateRange,
-      firstDate: DateTime(2022),
-      lastDate: DateTime(2100),
-    );
-
-    if (newDateRange == null) return;
-    setState(() {
-      dateRange = newDateRange;
-      data =
-          "${dateRange.start.day}/${dateRange.start.month} a ${dateRange.end.day}/${dateRange.end.month}";
-    });
   }
 }
 

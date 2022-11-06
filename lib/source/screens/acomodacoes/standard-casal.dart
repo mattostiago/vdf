@@ -3,6 +3,7 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/caixa_dialogo.dart';
+import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/models/menu_acomodacoes.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-plus.dart';
 import 'package:vdf/source/screens/acomodacoes/standard-superior.dart';
@@ -16,6 +17,7 @@ class StandardCasal extends StatefulWidget {
 
 class _StandardCasalState extends State<StandardCasal> {
   CaixaDialogo caixa = CaixaDialogo();
+  Modal modal = Modal();
   Botoes botao = Botoes();
   final List<MenuAcomodacoes> menu = [
     MenuAcomodacoes('assets/acomodacoes/standard-plus/azaleia-2.jpg',
@@ -191,8 +193,8 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                caixa.caixaSimplesTituloEMensagem(context, "TV",
-                                    "O Standard Casal conta com TV LCD.");
+                                modal.chamaModalAmenidades(context, Icons.tv,
+                                    "TV", "O Standard Casal conta com TV LCD.");
                               },
                               child: const SizedBox(
                                 width: 40,
@@ -215,8 +217,9 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                caixa.caixaSimplesTituloEMensagem(
+                                modal.chamaModalAmenidades(
                                     context,
+                                    Icons.wind_power_rounded,
                                     "Ventilador",
                                     "O Standard Casal conta ventilador.");
                               },
@@ -241,8 +244,9 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                caixa.caixaSimplesTituloEMensagem(
+                                modal.chamaModalAmenidades(
                                     context,
+                                    Icons.photo,
                                     "Vista para as Montanhas",
                                     "Da janela do quarto é possível contemplar toda a exuberância das montanhas de Nova Friburgo.");
                               },
@@ -267,8 +271,9 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                caixa.caixaSimplesTituloEMensagem(
+                                modal.chamaModalAmenidades(
                                     context,
+                                    Icons.shower,
                                     "Banheiro privativo",
                                     "Banheiro privativo com chuveiro com aquecimento.");
                               },
@@ -293,7 +298,7 @@ class _StandardCasalState extends State<StandardCasal> {
                             child: InkWell(
                               splashColor: Colors.black45, // Splash color
                               onTap: () {
-                                caixa.caixaSimplesTituloEMensagem(context,
+                                modal.chamaModalAmenidades(context, Icons.wifi,
                                     "Wi-Fi", "Wi-Fi grátis disponível.");
                               },
                               child: const SizedBox(
