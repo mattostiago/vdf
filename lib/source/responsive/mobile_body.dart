@@ -279,7 +279,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                 //bottomLeft: Radius.circular(20),
                                               ),
                                               boxShadow: [
-                                                BoxShadow(blurRadius: 35)
+                                                BoxShadow(blurRadius: 60)
                                               ],
                                             ),
                                             padding: const EdgeInsets.all(4),
@@ -330,7 +330,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                               //bottomLeft: Radius.circular(20),
                                             ),
                                             boxShadow: [
-                                              BoxShadow(blurRadius: 35)
+                                              BoxShadow(blurRadius: 60)
                                             ],
                                           ),
                                           padding: const EdgeInsets.all(4),
