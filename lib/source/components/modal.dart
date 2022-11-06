@@ -28,7 +28,7 @@ class Modal {
 
   chamaModalImagens(BuildContext context, Imagem imagem) {
     showModalBottomSheet(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.white,
       //enableDrag: false,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -42,7 +42,7 @@ class Modal {
             const Icon(
               Icons.maximize,
               size: 40,
-              color: Colors.white70,
+              color: Colors.black54,
             ),
             Stack(
               children: [
@@ -106,7 +106,7 @@ class Modal {
             ),
             Column(
               children: [
-                Text("Motor de reservas\n\n\n\n\n\n\n\n\n"),
+                const Text("Motor de reservas\n\n\n\n\n\n\n\n\n"),
                 ElevatedButton(
                   onPressed: () {
                     pickDateRange();

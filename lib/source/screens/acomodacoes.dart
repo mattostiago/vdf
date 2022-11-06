@@ -67,7 +67,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
         child: const Icon(Icons.whatsapp),
         onPressed: () {},
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
 
       body: Column(
         children: [
@@ -186,37 +186,6 @@ class _AcomodacoesState extends State<Acomodacoes> {
                 ],
               ),
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        backgroundColor: colorScheme.surface,
-        selectedItemColor: colorScheme.onSurface,
-        unselectedItemColor: colorScheme.onSurface.withOpacity(.60),
-        selectedLabelStyle: textTheme.caption,
-        unselectedLabelStyle: textTheme.caption,
-        onTap: (value) {
-          // Respond to item press.
-          // setState(() => _currentIndex = value);
-        },
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Inicial',
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            label: 'Acomodações',
-            icon: Icon(Icons.meeting_room),
-          ),
-          BottomNavigationBarItem(
-            label: 'Atrações',
-            icon: Icon(Icons.room_service_sharp),
-          ),
-          BottomNavigationBarItem(
-            label: 'Mais',
-            icon: Icon(Icons.more_vert_sharp),
           ),
         ],
       ),

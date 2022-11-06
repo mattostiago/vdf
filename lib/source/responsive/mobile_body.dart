@@ -58,6 +58,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                 .push(MaterialPageRoute(builder: (context) => MyMobileBody()));
           },
         ),
+        actions: [],
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
