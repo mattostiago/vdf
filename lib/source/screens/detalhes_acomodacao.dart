@@ -90,7 +90,7 @@ class DetalhesAcomodacao extends StatelessWidget {
             onPageChanged: (value) {
               //debugPrint('Page changed: $value');
             },
-            height: 300,
+            height: MediaQuery.of(context).size.height * 0.6,
             indicatorRadius: 2,
             autoPlayInterval: 3000,
             isLoop: true,
