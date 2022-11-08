@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
+import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/models/imagem.dart';
 import 'package:vdf/source/screens/detalhes_foto.dart';
 import 'package:vdf/source/utils/constants.dart';
@@ -17,19 +18,11 @@ class Fotos extends StatefulWidget {
 class _FotosState extends State<Fotos> {
   Modal modal = Modal();
   Botoes botao = Botoes();
-  final List<Imagem> imagem = [
-    Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 3", "Descrição3"),
-    Imagem("assets/pousada/por-do-sol.jpg", "Pôr do Sol 1", "Descrição1"),
-    Imagem("assets/pousada/por-do-sol-2.jpg", "Pôr do Sol 2", "Descrição2"),
-    Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 4", "Descrição4"),
-    Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 3", "Descrição3"),
-    Imagem("assets/pousada/por-do-sol.jpg", "Pôr do Sol 1", "Descrição1"),
-    Imagem("assets/pousada/por-do-sol-2.jpg", "Pôr do Sol 2", "Descrição2"),
-    Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 4", "Descrição4"),
-  ];
+  Dados dados = Dados();
 
   @override
   Widget build(BuildContext context) {
+    List<Imagem> imagem = dados.pegarGaleria();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fotos"),

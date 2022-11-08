@@ -29,7 +29,7 @@ class Modal {
 
   chamaModalImagens(BuildContext context, Imagem imagem) {
     showModalBottomSheet(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.black,
       //enableDrag: false,
       isScrollControlled: true,
       shape: const RoundedRectangleBorder(
@@ -51,7 +51,7 @@ class Modal {
                         topRight: Radius.circular(20)),
                     image: DecorationImage(
                       image: AssetImage(imagem.imagem),
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -62,10 +62,11 @@ class Modal {
                     Icon(
                       Icons.maximize,
                       size: 40,
-                      color: Colors.white,
+                      color: Colors.white54,
                     ),
                   ],
                 ),
+                SizedBox(height: 20),
                 Row(
                   children: [
                     Container(
@@ -82,7 +83,7 @@ class Modal {
                         style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            color: Colors.white54),
                       ),
                     ),
                   ],
