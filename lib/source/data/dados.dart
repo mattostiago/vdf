@@ -92,6 +92,49 @@ class Dados {
       "Banheiro privativo com chuveiro com aquecimento.");
   Amenidades wifi = Amenidades(Icons.wifi, "Wi-Fi", "Wi-Fi grátis disponível.");
 
+//Pousada
+  Imagem porDoSol1 =
+      Imagem("assets/pousada/por-do-sol.jpg", "Pôr do Sol 1", "Pôr do Sol");
+  Imagem porDoSol2 =
+      Imagem("assets/pousada/por-do-sol-2.jpg", "Pôr do Sol 2", "Pôr do Sol");
+  Imagem porDoSol3 =
+      Imagem("assets/pousada/por-do-sol-3.jpg", "Pôr do Sol 3", "Pôr do Sol");
+  Imagem cafe1 =
+      Imagem("assets/pousada/cafe-1.jpg", "Café da manhã 1", "Café da manhã");
+  Imagem cafe2 =
+      Imagem("assets/pousada/cafe-2.jpg", "Café da manhã 2", "Café da manhã");
+  Imagem cafe3 =
+      Imagem("assets/pousada/cafe-3.jpg", "Café da manhã 3", "Café da manhã");
+  Imagem cidade =
+      Imagem("assets/pousada/cidade.jpg", "Cidade", "Nova Friburgo");
+  Imagem fachada = Imagem("assets/pousada/fachada.jpg", "Fachada", "Fachada");
+  Imagem jogos =
+      Imagem("assets/pousada/jogos.jpg", "Sala de Jogos", "Sala de Jogos");
+  Imagem sala1 = Imagem("assets/pousada/sala.jpg", "Sala", "Sala");
+  Imagem sala2 = Imagem("assets/pousada/sala2.jpg", "Sala 2", "Sala");
+
+//galeria
+  pegarGaleria() {
+    List<Imagem> galeria = [
+      cidade,
+      sala1,
+      porDoSol1,
+      cafe1,
+      cafe2,
+      cafe3,
+      porDoSol2,
+      porDoSol3,
+      sala2,
+      jogos,
+      rosa,
+      bouganville,
+      lotusCima,
+      margarida,
+      banheiroBouganville
+    ];
+    return galeria;
+  }
+
   pegarAcomodacoes() {
     //ACOMODAÇÕES
     Acomodacao standard_casal = Acomodacao(
