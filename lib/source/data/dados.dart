@@ -36,28 +36,28 @@ class Dados {
     Acomodacao standard_casal = Acomodacao(
       "Standard Casal",
       "A Suíte Standard alia simplicidade e conforto com uma linda vista para o vale da cidade de Nova Friburgo . Possui Tv e está perto de um jardim aonde o hóspede poderá ouvir o canto dos pássaros e sentir a tranquilidade proporcionada pela natureza.",
-      "",
+      "Descrição curta",
       [margarida, azaleia],
       [tv, ventilador, vistaMontanhas, banheiroPrivado],
     );
     Acomodacao standard_plus = Acomodacao(
       "Standard Plus",
       "A Suíte Standard alia simplicidade e conforto com uma linda vista para o vale da cidade de Nova Friburgo . Possui Tv e está perto de um jardim aonde o hóspede poderá ouvir o canto dos pássaros e sentir a tranquilidade proporcionada pela natureza.",
-      "",
+      "Descrição curta",
       [margarida, azaleia],
       [tv, ventilador, vistaMontanhas, banheiroPrivado],
     );
     Acomodacao standard_superior = Acomodacao(
       "Standard Superior",
       "A Suíte Standard alia simplicidade e conforto com uma linda vista para o vale da cidade de Nova Friburgo . Possui Tv e está perto de um jardim aonde o hóspede poderá ouvir o canto dos pássaros e sentir a tranquilidade proporcionada pela natureza.",
-      "",
+      "Descrição curta",
       [margarida, azaleia],
       [tv, ventilador, vistaMontanhas, banheiroPrivado],
     );
     Acomodacao standard_superior_casal = Acomodacao(
       "Standard Plus",
       "A Suíte Standard alia simplicidade e conforto com uma linda vista para o vale da cidade de Nova Friburgo . Possui Tv e está perto de um jardim aonde o hóspede poderá ouvir o canto dos pássaros e sentir a tranquilidade proporcionada pela natureza.",
-      "",
+      "Descrição curta",
       [margarida, azaleia],
       [tv, ventilador, vistaMontanhas, banheiroPrivado],
     );
