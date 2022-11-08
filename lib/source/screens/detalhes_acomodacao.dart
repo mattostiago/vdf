@@ -409,9 +409,9 @@ class DetalhesAcomodacao extends StatelessWidget {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         DetalhesAcomodacao(
-                                                            acomodacao: acomodacoes[
-                                                                acomodacoes
-                                                                    .length])));
+                                                            acomodacao:
+                                                                acomodacoes[
+                                                                    tam])));
                                           },
                                         ),
                                       );
