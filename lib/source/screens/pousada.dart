@@ -18,12 +18,12 @@ class _PousadaState extends State<Pousada> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const Text("A Pousada"),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 8, //sombra
+        // backgroundColor: Colors.transparent,
+        //  elevation: 8, //sombra
       ),
       body: Column(
         children: [
@@ -47,7 +47,7 @@ class _PousadaState extends State<Pousada> {
                     ],
                   ),
                   Container(
-                    height: 100,
+                    height: 50,
                     decoration: const BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.only(
@@ -56,6 +56,8 @@ class _PousadaState extends State<Pousada> {
                       ),
                     ),
                     child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
                           padding: const EdgeInsets.only(left: 4, top: 4),
