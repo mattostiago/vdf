@@ -27,26 +27,54 @@ class _PousadaState extends State<Pousada> {
       ),
       body: Column(
         children: [
-          ImageSlideshow(
-              indicatorColor: cor1,
-              onPageChanged: (value) {
-                //debugPrint('Page changed: $value');
-              },
-              height: MediaQuery.of(context).size.height * 0.4,
-              indicatorRadius: 2,
-              autoPlayInterval: 3000,
-              isLoop: true,
-              children: dados.pegarSlideSobre()),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Stack(
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.4,
+                        decoration: const BoxDecoration(
+                          image: DecorationImage(
+                            image:
+                                AssetImage("assets/pousada/por-do-sol-2.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        //child:
+                      ),
+                    ],
+                  ),
                   Container(
-                    padding: const EdgeInsets.all(12),
-                    child: Text(
-                      dados.tituloSobre,
-                      style: const TextStyle(
-                          fontSize: 20, fontStyle: FontStyle.italic),
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
+                      ),
+                    ),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(left: 4, top: 4),
+                          child: Image.asset(
+                            "assets/Logo-v-160.png",
+                            scale: 2,
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.all(12),
+                          child: Text(
+                            dados.tituloSobre,
+                            style: const TextStyle(
+                                fontSize: 20,
+                                fontStyle: FontStyle.italic,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   Container(
@@ -56,6 +84,16 @@ class _PousadaState extends State<Pousada> {
                       textAlign: TextAlign.justify,
                     ),
                   ),
+                  ImageSlideshow(
+                      indicatorColor: cor1,
+                      onPageChanged: (value) {
+                        //debugPrint('Page changed: $value');
+                      },
+                      height: MediaQuery.of(context).size.height * 0.4,
+                      indicatorRadius: 2,
+                      autoPlayInterval: 3000,
+                      isLoop: true,
+                      children: dados.pegarSlideSobre()),
                 ],
               ),
             ),
