@@ -77,7 +77,6 @@ class DetalhesAcomodacao extends StatelessWidget {
           //style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        // backgroundColor: corPrimaria,
         backgroundColor: Colors.transparent,
         elevation: 8, //sombra
       ),

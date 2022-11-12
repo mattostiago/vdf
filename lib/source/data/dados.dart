@@ -113,9 +113,39 @@ class Dados {
   Imagem sala1 = Imagem("assets/pousada/sala.jpg", "Sala", "Sala");
   Imagem sala2 = Imagem("assets/pousada/sala2.jpg", "Sala 2", "Sala");
 
+  //dadosPaginaSobre
+  String tituloSobre = "Um visual deslumbrante";
+  String descricaoSobre =
+      "Localizada em Nova Friburgo com uma vista deslumbrante do vale. Perto de tudo, mas longe dos ruídos da cidade. Bem perto de você: Trilhas, cachoeiras, restaurantes e pontos turísticos. Paz e tranquilidade em alto astral. A pousada dispões de mini quadra gramada de futebol / volei, gazebo no jardim, sala de lareira com TV, salão de jogos, terraço panorâmico, serviço de bar e Wi-Fi grátis.";
+  //slideSobre
+  List<Widget> pegarSlideSobre() {
+    List<Imagem> imagens = [
+      sala1,
+      sala2,
+      porDoSol1,
+      porDoSol2,
+      fachada,
+      cidade,
+      cafe2,
+      cafe3,
+      cafe1
+    ];
+
+    List<Widget> arrayWidgetsImagens = [];
+    for (int i = 0; i < imagens.length; i++) {
+      arrayWidgetsImagens.add(
+        Image.asset(
+          imagens[i].imagem,
+          fit: BoxFit.cover,
+        ),
+      );
+    }
+    return arrayWidgetsImagens;
+  }
+
 //galeria
   pegarGaleria() {
-    List<Imagem> galeria = [
+    List galeria = [
       cidade,
       sala1,
       porDoSol1,

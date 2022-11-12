@@ -22,7 +22,7 @@ class _FotosState extends State<Fotos> {
 
   @override
   Widget build(BuildContext context) {
-    List<Imagem> imagem = dados.pegarGaleria();
+    List imagem = dados.pegarGaleria();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Fotos"),
