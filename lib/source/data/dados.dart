@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vdf/source/models/acomodacao.dart';
 import 'package:vdf/source/models/amenidades.dart';
 import 'package:vdf/source/models/imagem.dart';
+import 'package:vdf/source/models/promocao.dart';
 
 class Dados {
   //IMAGENS
@@ -216,6 +217,27 @@ class Dados {
       standard_plus,
       standard_superior,
       standard_superior_casal
+    ];
+  }
+
+  pegarPromocoes() {
+    //ACOMODAÇÕES
+    Promocao promo1 = Promocao(
+      "Promo1",
+      "Promo1 descrição grande",
+      "01 a 02/01/23",
+      [porDoSol3],
+    );
+    Promocao promo2 = Promocao(
+      "Promo2",
+      "Promo2 descrição grande",
+      "01 a 02/02/23",
+      [cafe1],
+    );
+
+    return [
+      promo1,
+      promo2,
     ];
   }
 }
