@@ -89,7 +89,7 @@ class DetalhesAcomodacao extends StatelessWidget {
             onPageChanged: (value) {
               //debugPrint('Page changed: $value');
             },
-            height: MediaQuery.of(context).size.height * 0.6,
+            height: MediaQuery.of(context).size.height * 0.55,
             indicatorRadius: 2,
             autoPlayInterval: 3000,
             isLoop: true,
@@ -204,6 +204,50 @@ class DetalhesAcomodacao extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Padding(
+                      padding: const EdgeInsets.only(bottom: 0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.bed_sharp,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              const Text("Cama queen"),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.square_foot_outlined,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              const Text("40 m²"),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              IconButton(
+                                onPressed: () {},
+                                icon: const Icon(
+                                  Icons.family_restroom,
+                                  color: Colors.amber,
+                                ),
+                              ),
+                              const Text("Máx 2 pessoas"),
+                            ],
+                          ),
+                        ],
+                      )),
                   botao.botaoReservarAgora(context),
                   Padding(
                     padding: const EdgeInsets.only(
