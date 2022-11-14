@@ -204,45 +204,49 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               isLoop: true,
                               children: [
                                 InkWell(
-                                  child: Stack(
-                                    children: [
-                                      Image.asset(
-                                        'assets/pousada/cidade.jpg',
-                                        fit: BoxFit.cover,
-                                        width:
-                                            MediaQuery.of(context).size.width,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                0.2,
-                                      ),
-                                      Container(
-                                          padding: const EdgeInsets.all(8),
-                                          alignment:
-                                              AlignmentDirectional.topStart,
-                                          child: Container(
-                                            decoration: const BoxDecoration(
-                                              // color: Colors.lime,
-                                              borderRadius: BorderRadius.all(
-                                                Radius.circular(8),
+                                  child: Hero(
+                                    tag: 'assets/pousada/cidade.jpg',
+                                    child: Stack(
+                                      children: [
+                                        Image.asset(
+                                          'assets/pousada/cidade.jpg',
+                                          fit: BoxFit.cover,
+                                          width:
+                                              MediaQuery.of(context).size.width,
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              0.2,
+                                        ),
+                                        Container(
+                                            padding: const EdgeInsets.all(8),
+                                            alignment:
+                                                AlignmentDirectional.topStart,
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                // color: Colors.lime,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8),
+                                                ),
                                               ),
-                                            ),
-                                            padding: const EdgeInsets.all(4),
-                                            child: const Text(
-                                              "Nova Friburgo",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.white,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  shadows: [
-                                                    Shadow(
-                                                      blurRadius: 10,
-                                                    )
-                                                  ]),
-                                            ),
-                                          )),
-                                    ],
+                                              padding: const EdgeInsets.all(4),
+                                              child: const Text(
+                                                "Nova Friburgo",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    color: Colors.white,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    shadows: [
+                                                      Shadow(
+                                                        blurRadius: 10,
+                                                      )
+                                                    ]),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                   ),
                                   onTap: () {
                                     Navigator.of(context).push(
