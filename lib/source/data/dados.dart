@@ -113,6 +113,7 @@ class Dados {
       Imagem("assets/pousada/jogos.jpg", "Sala de Jogos", "Sala de Jogos");
   Imagem sala1 = Imagem("assets/pousada/sala.jpg", "Sala", "Sala");
   Imagem sala2 = Imagem("assets/pousada/sala2.jpg", "Sala 2", "Sala");
+  Imagem maps = Imagem("assets/pousada/maps.png", "Google Maps", "Maps");
 
   //dadosPaginaSobre
   String tituloSobre = "Um visual deslumbrante";
