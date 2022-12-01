@@ -3,6 +3,7 @@ import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/components/reservar.dart';
+import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/screens/cafe_da_manha.dart';
 import 'package:vdf/source/screens/fotos.dart';
@@ -21,6 +22,7 @@ class MyMobileBody extends StatefulWidget {
 }
 
 class _MyMobileBodyState extends State<MyMobileBody> {
+  Dados dados = Dados();
   final List<MenuData> menu = [
     MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
     MenuData(Icons.photo, 'Fotos', Fotos()),
@@ -92,8 +94,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               bottomRight: Radius.circular(20),
                             ),
                             image: DecorationImage(
-                              image:
-                                  AssetImage("assets/pousada/por-do-sol-3.jpg"),
+                              image: AssetImage('assets/pousada/vista2.jpg'),
                               fit: BoxFit.cover,
                             ),
                           ),

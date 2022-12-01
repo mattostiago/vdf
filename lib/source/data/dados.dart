@@ -6,6 +6,11 @@ import 'package:vdf/source/models/promocao.dart';
 
 class Dados {
   //IMAGENS
+
+  //INICIAL
+  Imagem capaPagInicial =
+      Imagem('assets/pousada/vista2.jpg', "Capa Vista", "Capa Vista Pousada");
+
   //Standard Casal
   Imagem margarida = Imagem('assets/acomodacoes/standard-casal/margarida.jpg',
       "Margarida", "Standard Casal");
