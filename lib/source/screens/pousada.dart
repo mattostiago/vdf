@@ -30,68 +30,78 @@ class _PousadaState extends State<Pousada> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: const Text("A Pousada"),
-        backgroundColor: Colors.transparent,
-        centerTitle: true,
-        elevation: 0,
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Stack(
-                    alignment: AlignmentDirectional.bottomCenter,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: const Text("A Pousada"),
+          backgroundColor: Colors.transparent,
+          centerTitle: true,
+          elevation: 0,
+        ),
+        body: SizedBox(
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  dados.background.imagem,
+                  repeat: ImageRepeat.repeat,
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
                     children: [
-                      Column(
+                      Stack(
+                        alignment: AlignmentDirectional.bottomCenter,
                         children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.7,
-                            width: MediaQuery.of(context).size.width,
-                            child: ClipRRect(
-                              child: ImageSlideshow(
-                                  indicatorColor: cor1,
-                                  onPageChanged: (value) {
-                                    //debugPrint('Page changed: $value');
-                                  },
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.4,
-                                  indicatorRadius: 2,
-                                  autoPlayInterval: 3000,
-                                  isLoop: true,
-                                  children: dados.pegarSlideSobre()),
-                            ),
+                          Column(
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.7,
+                                width: MediaQuery.of(context).size.width,
+                                child: ClipRRect(
+                                  child: ImageSlideshow(
+                                      indicatorColor: cor1,
+                                      onPageChanged: (value) {
+                                        //debugPrint('Page changed: $value');
+                                      },
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.4,
+                                      indicatorRadius: 2,
+                                      autoPlayInterval: 3000,
+                                      isLoop: true,
+                                      children: dados.pegarSlideSobre()),
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                            ],
                           ),
-                          const SizedBox(height: 20),
-                        ],
-                      ),
-                      Container(
-                        height: 52,
-                        decoration: BoxDecoration(
-                          color: cor3,
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30)),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.black26,
-                                offset: Offset(0.0, 5.0),
-                                blurRadius: 6)
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              // height: 100,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  /*
+                          Container(
+                            height: 52,
+                            decoration: BoxDecoration(
+                              color: cor3,
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(30),
+                                  topRight: Radius.circular(30)),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.black26,
+                                    offset: Offset(0.0, 5.0),
+                                    blurRadius: 6)
+                              ],
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: MediaQuery.of(context).size.width,
+                                  // height: 100,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      /*
                                   Container(
                                     padding:
                                         const EdgeInsets.only(left: 4, top: 15),
@@ -100,171 +110,175 @@ class _PousadaState extends State<Pousada> {
                                       scale: 8,
                                     ),
                                   ),*/
-                                  Container(
-                                    padding: const EdgeInsets.all(12),
-                                    child: Text(
-                                      dados.tituloSobre,
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    color: cor3,
-                    child: GridView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: menu.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 4,
-                        mainAxisExtent: 128,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          elevation: 10.0,
-                          child: InkWell(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Stack(
-                                  alignment: AlignmentDirectional.bottomCenter,
-                                  children: [
-                                    Container(
-                                      height: 120.0,
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        image: DecorationImage(
-                                          image: AssetImage(menu[index].imagem),
-                                          fit: BoxFit.cover,
+                                      Container(
+                                        padding: const EdgeInsets.all(12),
+                                        child: Text(
+                                          dados.tituloSobre,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
                                         ),
                                       ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        color: cor3,
+                        child: GridView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: menu.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 4,
+                            mainAxisExtent: 128,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            return Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              elevation: 10.0,
+                              child: InkWell(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Stack(
+                                      alignment:
+                                          AlignmentDirectional.bottomCenter,
+                                      children: [
+                                        Container(
+                                          height: 120.0,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  menu[index].imagem),
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 120.0,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                              color: Colors.black26),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.all(4),
+                                          child: Text(
+                                            menu[index].title,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                shadows: [
+                                                  BoxShadow(
+                                                      color: Colors.black,
+                                                      spreadRadius: 10,
+                                                      blurRadius: 1)
+                                                ]),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                                onTap: () {
+                                  modal.chamaModal(
+                                      context,
+                                      Container(
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                0.5,
+                                        child: Center(
+                                            child:
+                                                Text("Mais informações aqui.")),
+                                      ));
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                      Container(
+                        //   color: Colors.blueAccent,
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          dados.descricaoSobre,
+                          textAlign: TextAlign.justify,
+                          style: TextStyle(fontSize: 10),
+                        ),
+                      ),
+                      InkWell(
+                        child: Container(
+                          child: Image.asset(dados.maps.imagem),
+                        ),
+                        onTap: () => _launchUrl(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Container(
+                            color: Colors.black87,
+                            padding: const EdgeInsets.only(
+                                left: 12, right: 75, top: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/Logo-v-160.png",
+                                      scale: 8,
                                     ),
-                                    Container(
-                                      height: 120.0,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          color: Colors.black26),
-                                    ),
-                                    Container(
-                                      padding: EdgeInsets.all(4),
+                                    const Padding(
+                                      padding: EdgeInsets.only(left: 8),
                                       child: Text(
-                                        menu[index].title,
-                                        style: const TextStyle(
-                                            color: Colors.white,
+                                        "Pousada Vale das Flores",
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                            fontSize: 16,
                                             fontWeight: FontWeight.bold,
-                                            shadows: [
-                                              BoxShadow(
-                                                  color: Colors.black,
-                                                  spreadRadius: 10,
-                                                  blurRadius: 1)
-                                            ]),
+                                            color: Colors.white),
                                       ),
                                     ),
                                   ],
-                                )
-                              ],
-                            ),
-                            onTap: () {
-                              modal.chamaModal(
-                                  context,
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.5,
-                                    child: Center(
-                                        child: Text("Mais informações aqui.")),
-                                  ));
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  Container(
-                    //   color: Colors.blueAccent,
-                    padding: const EdgeInsets.all(12),
-                    child: Text(
-                      dados.descricaoSobre,
-                      textAlign: TextAlign.justify,
-                      style: TextStyle(fontSize: 10),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      child: Image.asset(dados.maps.imagem),
-                    ),
-                    onTap: () => _launchUrl(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12),
-                    child: Container(
-                        color: Colors.black87,
-                        padding:
-                            const EdgeInsets.only(left: 12, right: 75, top: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Image.asset(
-                                  "assets/Logo-v-160.png",
-                                  scale: 8,
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.only(left: 8),
-                                  child: Text(
-                                    "Pousada Vale das Flores",
+                                  child: //Text("Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
+                                      Text(
+                                    "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
                                     textAlign: TextAlign.start,
                                     style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                      fontSize: 12,
+                                      //fontWeight: FontWeight.w600,
+                                      color: Colors.white54,
+                                    ),
                                   ),
                                 ),
+                                const SizedBox(height: 50),
                               ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 8),
-                              child: //Text("Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-                                  Text(
-                                "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  //fontWeight: FontWeight.w600,
-                                  color: Colors.white54,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 50),
-                          ],
-                        )),
+                            )),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   Future<void> _launchUrl() async {
