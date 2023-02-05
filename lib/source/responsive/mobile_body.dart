@@ -74,7 +74,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
         children: [
           Positioned.fill(
             child: Image.asset(
-              'assets/background.png',
+              dados.background.imagem,
               repeat: ImageRepeat.repeat,
             ),
           ),

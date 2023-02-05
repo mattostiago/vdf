@@ -10,7 +10,8 @@ class Dados {
   //INICIAL
   Imagem capaPagInicial =
       Imagem('assets/pousada/vista2.jpg', "Capa Vista", "Capa Vista Pousada");
-
+  Imagem background =
+      Imagem('assets/background.png', 'Background', 'Background');
   //Standard Casal
   Imagem margarida = Imagem('assets/acomodacoes/standard-casal/margarida.jpg',
       "Margarida", "Standard Casal");

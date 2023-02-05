@@ -13,18 +13,32 @@ Color? corTerciaria = Colors.black; //background
 //Color? corPrimaria = Colors.deepPurple[400];
 //Color? corSecundaria = Colors.deepPurple[300];
 //Color? corTerciaria = Colors.deepPurple[200]; //background
-MaterialColor corPrimaria = Colors.green;
-Color? corPadrao = Colors.green[800];
+//MaterialColor corPrimaria = Colors.green;
+//Color? corPadrao = Colors.green[800];
+//Color? corSecundaria = Colors.green[100];
+//Color? corTerciaria = Colors.transparent; //background
+//Color corLimao = Colors.lime;
+
+MaterialColor corPrimaria = Colors.brown;
+Color? corPadrao = Colors.blue;
 Color? corSecundaria = Colors.green[100];
 Color? corTerciaria = Colors.transparent; //background
+Color corLimao = Colors.amber;
 
-Color corLimao = Colors.lime;
-
+//paleta de cores baseado no logo
+Color cor1 = Color.fromRGBO(222, 184, 135, 1);
+Color cor2 = Color(0xFFd8e480);
+Color cor3 = Color.fromRGBO(160, 82, 45, 1);
+//Color cor3 = Color(0xFF399734);
+Color cor4 = Color(0xFF589a6a);
+Color cor5 = Color(0xFFa8cca0);
+/*
 //paleta de cores baseado no logo
 Color cor1 = Color(0xFFa5c415);
 Color cor2 = Color(0xFFd8e480);
 Color cor3 = Color(0xFF399734);
 Color cor4 = Color(0xFF589a6a);
 Color cor5 = Color(0xFFa8cca0);
+*/
 
 String urlWhatsApp = 'https://api.whatsapp.com/send?phone=5522997886941';
