@@ -33,6 +33,7 @@ class Botoes {
 
   FloatingActionButton retornaBotaoFlutuanteWhatsApp() {
     return FloatingActionButton(
+      backgroundColor: Colors.green,
       child: const Icon(Icons.whatsapp),
       onPressed: () {
         launchUrl(
