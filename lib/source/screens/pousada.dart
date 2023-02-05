@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/utils/constants.dart';
@@ -17,6 +19,7 @@ class Pousada extends StatefulWidget {
 class _PousadaState extends State<Pousada> {
   Dados dados = Dados();
   Modal modal = Modal();
+  Botoes botao = Botoes();
 
   final Uri _url = Uri.parse(
       'https://www.google.com/maps/place/Pousada+Vale+das+Flores/@-22.2846187,-42.515241,17z/data=!3m1!4b1!4m8!3m7!1s0x978ae3ff627ffb:0xbcf22390017c4b4c!5m2!4m1!1i2!8m2!3d-22.2846236!4d-42.5151785');
@@ -30,6 +33,7 @@ class _PousadaState extends State<Pousada> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           title: const Text("A Pousada"),
@@ -132,7 +136,8 @@ class _PousadaState extends State<Pousada> {
                         padding: EdgeInsets.all(5),
                         color: cor3,
                         child: GridView.builder(
-                          padding: EdgeInsets.zero,
+                          padding: const EdgeInsets.only(
+                              top: 8, left: 8, right: 8, bottom: 20),
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           itemCount: menu.length,
@@ -213,7 +218,7 @@ class _PousadaState extends State<Pousada> {
                         ),
                       ),
                       Container(
-                        //   color: Colors.blueAccent,
+                        color: Colors.white,
                         padding: const EdgeInsets.all(12),
                         child: Text(
                           dados.descricaoSobre,
@@ -223,7 +228,29 @@ class _PousadaState extends State<Pousada> {
                       ),
                       InkWell(
                         child: Container(
-                          child: Image.asset(dados.maps.imagem),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 100,
+                                  width: 100,
+                                  child: Lottie.network(
+                                      "https://assets2.lottiefiles.com/packages/lf20_ua4bz2th.json"),
+                                ),
+                                ElevatedButton(
+                                    onPressed: () {
+                                      _launchUrl();
+                                    },
+                                    child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.6,
+                                      height: 72,
+                                      child: const Center(
+                                        child: Text("Acessar no Google Maps"),
+                                      ),
+                                    ))
+                              ]),
                         ),
                         onTap: () => _launchUrl(),
                       ),
