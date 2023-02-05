@@ -118,7 +118,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                   ),
                                   label: const Padding(
                                     padding: EdgeInsets.all(10),
-                                    child: Text("Reservar agora"),
+                                    child: Text("Consultar tarifas"),
                                   ),
                                   style: ButtonStyle(
                                     backgroundColor:
