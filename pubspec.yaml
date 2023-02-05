@@ -43,6 +43,7 @@ dependencies:
   url_launcher: ^6.1.6
   flutter_map: ^3.0.0
   latlong2: ^0.8.1
+  lottie: ^2.2.0
 
 dev_dependencies:
   flutter_test:
