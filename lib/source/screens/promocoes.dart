@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/models/promocao.dart';
 import 'package:vdf/source/screens/detalhes_promocao.dart';
@@ -14,10 +15,13 @@ class Promocoes extends StatefulWidget {
 
 class _PromocoesState extends State<Promocoes> {
   Dados dados = Dados();
+  Botoes botao = Botoes();
+
   @override
   Widget build(BuildContext context) {
     List<Promocao> promocoes = dados.pegarPromocoes();
     return Scaffold(
+        floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
         appBar: AppBar(
           title: const Text("Promoções"),
           centerTitle: true,
