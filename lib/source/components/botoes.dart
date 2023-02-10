@@ -34,7 +34,7 @@ class Botoes {
   FloatingActionButton retornaBotaoFlutuanteWhatsApp() {
     return FloatingActionButton(
       backgroundColor: Colors.green,
-      child: const Icon(Icons.whatsapp),
+      child: const Icon(Icons.phone),
       onPressed: () {
         launchUrl(
             Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
