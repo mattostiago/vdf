@@ -120,7 +120,8 @@ class _PousadaState extends State<Pousada> {
                     ],
                   ),
                   Container(
-                    padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.only(
+                        top: 10, left: 10, bottom: 20, right: 10),
                     color: cor3,
                     child: GridView.builder(
                       padding: EdgeInsets.zero,
