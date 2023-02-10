@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -24,10 +26,16 @@ class Acomodacoes extends StatefulWidget {
 class _AcomodacoesState extends State<Acomodacoes> {
   Botoes botao = Botoes();
   Dados dados = Dados();
+  bool progress = true;
 
   @override
   Widget build(BuildContext context) {
     List<Acomodacao> acomodacoes = dados.pegarAcomodacoes();
+    setState(() {
+      Timer(Duration(seconds: 3), () {
+        progress = false;
+      });
+    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -48,7 +56,9 @@ class _AcomodacoesState extends State<Acomodacoes> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 70),
+                  const SizedBox(height: 55),
+                  progress ? LinearProgressIndicator() : Center(),
+                  const SizedBox(height: 15),
                   GridView.builder(
                     padding: EdgeInsets.zero,
                     shrinkWrap: true,
