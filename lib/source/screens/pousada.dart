@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:lottie/lottie.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/utils/constants.dart';
@@ -18,6 +19,7 @@ class Pousada extends StatefulWidget {
 class _PousadaState extends State<Pousada> {
   Dados dados = Dados();
   Modal modal = Modal();
+  Botoes botao = Botoes();
 
   final Uri _url = Uri.parse(
       'https://www.google.com/maps/place/Pousada+Vale+das+Flores/@-22.2846187,-42.515241,17z/data=!3m1!4b1!4m8!3m7!1s0x978ae3ff627ffb:0xbcf22390017c4b4c!5m2!4m1!1i2!8m2!3d-22.2846236!4d-42.5151785');
@@ -38,6 +40,8 @@ class _PousadaState extends State<Pousada> {
         centerTitle: true,
         elevation: 0,
       ),
+      floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       body: Column(
         children: [
           Expanded(
