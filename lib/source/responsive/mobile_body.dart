@@ -188,7 +188,7 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 height:
                                     MediaQuery.of(context).size.height * 0.2,
                                 indicatorRadius: 3,
-                                autoPlayInterval: 4000,
+                                autoPlayInterval: 5000,
                                 isLoop: true,
                                 children: [
                                   InkWell(
@@ -208,34 +208,66 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                 0.2,
                                           ),
                                           Container(
-                                              padding: const EdgeInsets.all(8),
-                                              alignment:
-                                                  AlignmentDirectional.topStart,
-                                              child: Container(
-                                                decoration: const BoxDecoration(
-                                                  // color: Colors.lime,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(8),
+                                            padding: const EdgeInsets.all(8),
+                                            alignment:
+                                                AlignmentDirectional.topStart,
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                // color: Colors.lime,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8),
+                                                ),
+                                              ),
+                                              padding: const EdgeInsets.all(4),
+                                              child: const Text(
+                                                "Nova Friburgo",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    color: Colors.white,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    shadows: [
+                                                      Shadow(
+                                                        blurRadius: 10,
+                                                      )
+                                                    ]),
+                                              ),
+                                            ),
+                                          ),
+                                          Container(
+                                            padding: const EdgeInsets.all(8),
+                                            alignment:
+                                                AlignmentDirectional.topEnd,
+                                            child: Container(
+                                              decoration: const BoxDecoration(
+                                                // color: Colors.lime,
+                                                borderRadius: BorderRadius.all(
+                                                  Radius.circular(8),
+                                                ),
+                                              ),
+                                              padding: const EdgeInsets.all(4),
+                                              child: ElevatedButton(
+                                                style: ButtonStyle(
+                                                  shape:
+                                                      MaterialStateProperty.all(
+                                                    RoundedRectangleBorder(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              16.0),
+                                                    ),
                                                   ),
                                                 ),
-                                                padding:
-                                                    const EdgeInsets.all(4),
-                                                child: const Text(
-                                                  "Nova Friburgo",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      color: Colors.white,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      shadows: [
-                                                        Shadow(
-                                                          blurRadius: 10,
-                                                        )
-                                                      ]),
-                                                ),
-                                              )),
+                                                child: const Text("+ Ver mais"),
+                                                onPressed: () {
+                                                  Navigator.of(context).push(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              const NovaFriburgo()));
+                                                },
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -288,6 +320,39 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                     ]),
                                               ),
                                             )),
+                                        Container(
+                                          padding: const EdgeInsets.all(8),
+                                          alignment:
+                                              AlignmentDirectional.topEnd,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              // color: Colors.lime,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                              ),
+                                            ),
+                                            padding: const EdgeInsets.all(4),
+                                            child: ElevatedButton(
+                                              style: ButtonStyle(
+                                                shape:
+                                                    MaterialStateProperty.all(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              child: const Text("+ Ver mais"),
+                                              onPressed: () {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            Jogos()));
+                                              },
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                     onTap: () {
@@ -331,6 +396,39 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                 color: Colors.white,
                                                 overflow: TextOverflow.ellipsis,
                                               ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          padding: const EdgeInsets.all(8),
+                                          alignment:
+                                              AlignmentDirectional.topEnd,
+                                          child: Container(
+                                            decoration: const BoxDecoration(
+                                              // color: Colors.lime,
+                                              borderRadius: BorderRadius.all(
+                                                Radius.circular(8),
+                                              ),
+                                            ),
+                                            padding: const EdgeInsets.all(4),
+                                            child: ElevatedButton(
+                                              style: ButtonStyle(
+                                                shape:
+                                                    MaterialStateProperty.all(
+                                                  RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            16.0),
+                                                  ),
+                                                ),
+                                              ),
+                                              child: const Text("+ Ver mais"),
+                                              onPressed: () {
+                                                Navigator.of(context).push(
+                                                    MaterialPageRoute(
+                                                        builder: (context) =>
+                                                            CafeDaManha()));
+                                              },
                                             ),
                                           ),
                                         ),
