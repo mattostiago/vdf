@@ -9,10 +9,6 @@ import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/models/acomodacao.dart';
 import 'package:vdf/source/models/menu_acomodacoes.dart';
 import 'package:vdf/source/responsive/dimensions.dart';
-import 'package:vdf/source/screens/acomodacoes/standard-casal.dart';
-import 'package:vdf/source/screens/acomodacoes/standard-plus.dart';
-import 'package:vdf/source/screens/acomodacoes/standard-superior-casal.dart';
-import 'package:vdf/source/screens/acomodacoes/standard-superior.dart';
 import 'package:vdf/source/screens/detalhes_acomodacao.dart';
 import 'package:vdf/source/utils/constants.dart';
 
