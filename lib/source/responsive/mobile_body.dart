@@ -115,29 +115,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                   width:
                                       MediaQuery.of(context).size.width * 0.7,
                                   padding: const EdgeInsets.all(8),
-                                  child: ElevatedButton.icon(
-                                    onPressed: () async {
-                                      reservar.iniciarConsulta(context);
-                                    },
-                                    icon: const Icon(
-                                      Icons.calendar_today_rounded,
-                                    ),
-                                    label: const Padding(
-                                      padding: EdgeInsets.all(10),
-                                      child: Text("Consultar tarifas"),
-                                    ),
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(cor1),
-                                      shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                          // Change your radius here
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  child: botao
+                                      .retornaBotaoConsultarTarifas(context),
                                 ),
                               ],
                             ),

@@ -31,11 +31,6 @@ class _AcomodacoesState extends State<Acomodacoes> {
   @override
   Widget build(BuildContext context) {
     List<Acomodacao> acomodacoes = dados.pegarAcomodacoes();
-    setState(() {
-      Timer(Duration(seconds: 3), () {
-        progress = false;
-      });
-    });
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -57,7 +52,7 @@ class _AcomodacoesState extends State<Acomodacoes> {
               child: Column(
                 children: [
                   const SizedBox(height: 55),
-                  progress ? LinearProgressIndicator() : Center(),
+                  //LinearProgressIndicator(),
                   const SizedBox(height: 15),
                   GridView.builder(
                     padding: EdgeInsets.zero,
