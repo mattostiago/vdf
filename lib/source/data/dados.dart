@@ -91,6 +91,8 @@ class Dados {
   //AMENIDADES
   Amenidades tv =
       Amenidades(Icons.tv, "TV", "Essa acomodação conta com TV LCD.");
+  Amenidades smarttv =
+      Amenidades(Icons.tv, "TV", "Essa acomodação conta com Smart TV.");
   Amenidades ventilador = Amenidades(Icons.wind_power_rounded, "Ventilador",
       "Essa acomodação conta ventilador.");
   Amenidades vistaMontanhas = Amenidades(Icons.photo, "Vista para as Montanhas",
@@ -98,6 +100,14 @@ class Dados {
   Amenidades banheiroPrivado = Amenidades(Icons.shower, "Banheiro privativo",
       "Banheiro privativo com chuveiro com aquecimento.");
   Amenidades wifi = Amenidades(Icons.wifi, "Wi-Fi", "Wi-Fi grátis disponível.");
+  Amenidades frigobar =
+      Amenidades(Icons.ac_unit, "Frigobar", "Frigobar no apartamento.");
+  Amenidades comVista = Amenidades(Icons.view_carousel_outlined, "Com Vista",
+      "Com vista para as montanhas da cidade.");
+  Amenidades secador =
+      Amenidades(Icons.dry, "Secador", "Com secador de cabelo.");
+  Amenidades roomService = Amenidades(
+      Icons.room_service, "Serviço de Quarto", "Com serviço de quarto.");
 
 //Pousada
   Imagem porDoSol1 =
@@ -175,55 +185,90 @@ class Dados {
 
   pegarAcomodacoes() {
     //ACOMODAÇÕES
-    Acomodacao standard_casal = Acomodacao(
-      "Standard Casal",
-      "A Suíte Standard alia simplicidade e conforto com uma linda vista para o vale da cidade de Nova Friburgo . Possui Tv e está perto de um jardim aonde o hóspede poderá ouvir o canto dos pássaros e sentir a tranquilidade proporcionada pela natureza.",
-      "Simplicidade",
-      [margarida, margaridaBanheiro, gardenia, gardeniaBanheiro],
-      [tv, ventilador, vistaMontanhas, banheiroPrivado],
-    );
     Acomodacao standard_plus = Acomodacao(
-      "Standard Plus",
-      "A Suíte Standard Plus possui o aconchego de uma lareira, frigobar , TV de Led e uma varanda com uma linda vista para as montanhas , onde o hóspede poderá apreciar o canto dos pássaros e toda a beleza que a natureza oferece.  Faça sua reserva!",
-      "Com lareira",
-      [
-        azaleia,
-        banheiroAzaleia,
-        azaleia1,
-        banheiroAzaleia,
-        lotusCima,
-        lotusBanheiro
-      ],
-      [tv, ventilador, vistaMontanhas, banheiroPrivado],
-    );
+        "Standard Plus",
+        "A Suíte Standard Plus é confortável e privativa. Possui o aconchego com uma lareira e uma varanda com uma vista espetacular das montanhas de onde poderá apreciar toda a beleza que a natureza oferece. Também possui TV ,frigobar e ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) .",
+        "Com lareira",
+        [
+          azaleia,
+          banheiroAzaleia,
+          azaleia1,
+          banheiroAzaleia,
+          lotusCima,
+          lotusBanheiro
+        ],
+        [
+          smarttv,
+          frigobar,
+          ventilador,
+          vistaMontanhas,
+          banheiroPrivado,
+          secador,
+          roomService,
+          wifi,
+        ],
+        2);
     Acomodacao standard_superior = Acomodacao(
-      "Standard Superior",
-      "A Suíte Standard Superior oferece todo o aconchego de uma casa de campo. Ela possui com frigobar , tv de Led e uma varanda onde o hóspede pode aproveitar para contemplar toda a exuberante beleza das montanhas e da cidade , do nascer ao pôr do sol.",
-      "Com varanda",
-      [
-        bromelia,
-        bouganville,
-        banheiroBouganville,
-        begonia,
-        banheiroBegonia,
-        rosa,
-        banheiroRosa
-      ],
-      [tv, ventilador, vistaMontanhas, banheiroPrivado],
-    );
+        "Standard Superior",
+        "A Suíte Standard Superior é privativa e oferece todo o aconchego de uma casa de campo com uma varanda para contemplar a vista panorâmica das montanhas e da cidade . Possui 01 cama de casal 01 de solteiro ,TV ,frigobar, ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) .",
+        "Com varanda",
+        [
+          bromelia,
+          bouganville,
+          banheiroBouganville,
+          begonia,
+          banheiroBegonia,
+          rosa,
+          banheiroRosa
+        ],
+        [
+          comVista,
+          smarttv,
+          wifi,
+          ventilador,
+          frigobar,
+          vistaMontanhas,
+          banheiroPrivado
+        ],
+        3);
+
+    Acomodacao standard_economico_casal = Acomodacao(
+        "Standard Econômico Casal",
+        "A Suíte Standard une conforto e simplicidade com uma linda vista das montanhas . Essa suíte possui uma cama de casal , TV , ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) .",
+        "Simplicidade",
+        [margarida, margaridaBanheiro, gardenia, gardeniaBanheiro],
+        [comVista, tv, ventilador, wifi, banheiroPrivado],
+        2);
+
     Acomodacao standard_superior_casal = Acomodacao(
-      "Standard Superior Casal",
-      "A Suíte Standard Superior Casal oferece todo o aconchego de uma casa de campo. Ela possui com frigobar , tv de Led e uma varanda onde o hóspede pode aproveitar para contemplar toda a exuberante beleza das montanhas e da cidade , do nascer ao pôr do sol.",
-      "Com varanda",
-      [violeta, geranio, banheiroGeranio],
-      [tv, ventilador, vistaMontanhas, banheiroPrivado],
-    );
+        "Standard Superior Casal",
+        "A Suíte Standard Superior Casal é privativa e oferece todo o aconchego de uma casa de campo com uma varanda para contemplar toda a exuberante beleza das montanhas e da cidade . Possui 01 cama de casal, TV ,frigobar, ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) .",
+        "Com varanda",
+        [violeta, geranio, banheiroGeranio],
+        [comVista, smarttv, frigobar, wifi, banheiroPrivado],
+        2);
+    Acomodacao standard_economico_triplo = Acomodacao(
+        "Standard Econômico Triplo",
+        "A Suíte Standard Triplo une conforto e simplicidade com uma linda vista das montanhas . Fica perto do jardim e possui uma cama de casal e 01 cama de solteiro , TV , ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) ",
+        "Simplicidade",
+        [margarida, margaridaBanheiro, gardenia, gardeniaBanheiro],
+        [comVista, tv, ventilador, wifi, banheiroPrivado],
+        3);
+    Acomodacao configuracaoDiferente = Acomodacao(
+        "Configuração Diferente",
+        "Para uma configuração diferente, com uma quantidade de pessoas específicas, entre em contato conosco pelo Whatsapp",
+        "Quantidade de pessoas",
+        [fachada],
+        [],
+        4);
 
     return [
-      standard_casal,
+      standard_economico_casal,
       standard_plus,
       standard_superior,
-      standard_superior_casal
+      standard_superior_casal,
+      standard_economico_triplo,
+      configuracaoDiferente
     ];
   }
 

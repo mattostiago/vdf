@@ -104,9 +104,10 @@ class DetalhesAcomodacao extends StatelessWidget {
                       left: 12,
                       top: 12,
                       bottom: 10,
+                      right: 12,
                     ),
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      //  crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const Text(
@@ -119,70 +120,14 @@ class DetalhesAcomodacao extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 12),
-                          child: InkWell(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: const [
-                                Icon(Icons.star_purple500_sharp,
-                                    color: Colors.amber),
-                                Icon(Icons.star_purple500_sharp,
-                                    color: Colors.amber),
-                                Icon(Icons.star_purple500_sharp,
-                                    color: Colors.amber),
-                                Icon(Icons.star_purple500_sharp,
-                                    color: Colors.amber),
-                                Icon(Icons.star_half_sharp,
-                                    color: Colors.amber),
-                                //Text(  "Avaliações", textAlign: TextAlign.center, ),
-                              ],
-                            ),
-                            onTap: () {
-                              modal.chamaModal(
-                                context,
-                                Column(
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: const [
-                                        Text(
-                                          "Avaliações",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w700,
-                                            color: Colors.black87,
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Icon(Icons.star_purple500_sharp,
-                                            color: Colors.amber),
-                                        Icon(Icons.star_purple500_sharp,
-                                            color: Colors.amber),
-                                        Icon(Icons.star_purple500_sharp,
-                                            color: Colors.amber),
-                                        Icon(Icons.star_purple500_sharp,
-                                            color: Colors.amber),
-                                        Icon(Icons.star_half_sharp,
-                                            color: Colors.amber),
-                                        //Text(  "Avaliações", textAlign: TextAlign.center, ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 50),
-                                    const Text(
-                                        "Veja o que os hóspedes estão falando dessa acomodação.\n\n\n\n\n"),
-                                  ],
-                                ),
-                              );
-                              // caixa.caixaSimplesTituloEMensagem( context,   "Avaliações",  "Confira o que os hóspedes estão falando dessa acomodação.");
-                            },
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.family_restroom,
+                            color: Colors.amber,
                           ),
                         ),
+                        Text("Máx ${acomodacao.capacidade} pessoas"),
                       ],
                     ),
                   ),
@@ -204,51 +149,9 @@ class DetalhesAcomodacao extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.bed_sharp,
-                                  color: Colors.amber,
-                                ),
-                              ),
-                              const Text("Cama queen"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.square_foot_outlined,
-                                  color: Colors.amber,
-                                ),
-                              ),
-                              const Text("40 m²"),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.family_restroom,
-                                  color: Colors.amber,
-                                ),
-                              ),
-                              const Text("Máx 2 pessoas"),
-                            ],
-                          ),
-                        ],
-                      )),
-                  botao.botaoReservarAgora(context),
+                  acomodacao.nome == "Configuração Diferente"
+                      ? botao.botaoWhatsappConfiguracaoDiferente(context)
+                      : botao.botaoReservarAgora(context),
                   Padding(
                     padding: const EdgeInsets.only(
                       left: 8,

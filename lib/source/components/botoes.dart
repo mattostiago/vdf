@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vdf/source/components/reservar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:vdf/source/utils/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Botoes {
   Reservar reservar = Reservar();
@@ -11,7 +12,9 @@ class Botoes {
       padding: const EdgeInsets.all(8),
       child: ElevatedButton.icon(
         onPressed: () {
-          reservar.iniciarConsulta(context);
+          // reservar.iniciarConsulta(context);
+          launchUrl(Uri.parse(
+              'https://reservas.desbravador.com.br/hotel-app/pousada-vale-das-flores/'));
         },
         icon: const Icon(
           Icons.calendar_today_rounded,
@@ -21,6 +24,41 @@ class Botoes {
           child: Text("Reservar agora"),
         ),
         style: ButtonStyle(
+          shape: MaterialStateProperty.all(
+            RoundedRectangleBorder(
+              // Change your radius here
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Container botaoWhatsappConfiguracaoDiferente(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.all(8),
+      child: ElevatedButton.icon(
+        onPressed: () {
+          // reservar.iniciarConsulta(context);
+          launchUrl(
+              Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
+        },
+        icon: const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white),
+        label: const Padding(
+          padding: EdgeInsets.all(10),
+          child: Text(
+            "Consultar via WhatsApp",
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Colors.green,
+          ),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               // Change your radius here
@@ -62,7 +100,7 @@ class Botoes {
   FloatingActionButton retornaBotaoFlutuanteWhatsApp() {
     return FloatingActionButton(
       backgroundColor: Colors.green,
-      child: const Icon(Icons.phone),
+      child: const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white),
       onPressed: () {
         launchUrl(
             Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
