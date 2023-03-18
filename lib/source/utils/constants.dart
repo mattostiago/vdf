@@ -19,14 +19,14 @@ Color? corTerciaria = Colors.black; //background
 //Color? corTerciaria = Colors.transparent; //background
 //Color corLimao = Colors.lime;
 
-MaterialColor corPrimaria = Colors.grey;
+MaterialColor corPrimaria = Colors.green;
 Color? corPadrao = Colors.blue;
 Color? corSecundaria = Colors.green[100];
 Color? corTerciaria = Colors.transparent; //background
 Color corLimao = Colors.amber;
 
 //paleta de cores baseado no logo
-Color cor1 = Color.fromRGBO(0, 0, 139, 1);
+Color cor1 = Color(0xFF399734);
 Color cor2 = Color(0xFFd8e480);
 Color cor3 = Color.fromRGBO(54, 54, 54, 1);
 //Color cor3 = Color(0xFF399734);
