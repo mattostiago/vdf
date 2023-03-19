@@ -12,6 +12,7 @@ import 'package:vdf/source/screens/nova_friburgo.dart';
 import 'package:vdf/source/screens/pousada.dart';
 import 'package:vdf/source/screens/promocoes.dart';
 import 'package:vdf/source/utils/constants.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class MyMobileBody extends StatefulWidget {
   const MyMobileBody({super.key});
@@ -22,6 +23,8 @@ class MyMobileBody extends StatefulWidget {
 
 class _MyMobileBodyState extends State<MyMobileBody> {
   Dados dados = Dados();
+  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
   final List<MenuData> menu = [
     MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
     MenuData(Icons.photo, 'Fotos', Fotos()),
