@@ -27,10 +27,10 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 //  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   final List<MenuData> menu = [
-    MenuData(Icons.hotel, 'Acomodações', 'acomodacoes', Acomodacoes()),
-    MenuData(Icons.photo, 'Fotos', 'fotos', Fotos()),
-    MenuData(Icons.local_attraction, 'A Pousada', 'pousada', Pousada()),
-    MenuData(Icons.discount, 'Promoções', 'promocoes', Promocoes()),
+    MenuData(Icons.hotel, 'Acomodações', '/acomodacoes', Acomodacoes()),
+    MenuData(Icons.photo, 'Fotos', '/fotos', Fotos()),
+    MenuData(Icons.local_attraction, 'A Pousada', '/pousada', Pousada()),
+    MenuData(Icons.discount, 'Promoções', '/promocoes', Promocoes()),
   ];
 
   final List<String> imgList = [
@@ -177,8 +177,8 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                 ],
                               ),
                               onTap: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => menu[index].destino));
+                                Navigator.pushNamed(
+                                    context, menu[index].urlExtensao);
                               },
                             ),
                           ),

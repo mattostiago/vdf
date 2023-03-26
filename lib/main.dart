@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:vdf/source/screens/acomodacoes.dart';
+import 'package:vdf/source/screens/cafe_da_manha.dart';
+import 'package:vdf/source/screens/fotos.dart';
 import 'package:vdf/source/screens/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:vdf/source/screens/jogos.dart';
+import 'package:vdf/source/screens/nova_friburgo.dart';
 import 'package:vdf/source/utils/constants.dart';
 import 'package:seo_renderer/seo_renderer.dart';
+import 'package:vdf/source/utils/navigate.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -32,9 +38,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: corPrimaria,
         ),
-        routes: {
-          '/': (context) => const HomePage(),
-        },
+        initialRoute: '/',
+        routes: Navigate.routes,
       ),
     );
   }

@@ -42,4 +42,4 @@ Color cor5 = Color(0xFFa8cca0);
 */
 
 String urlWhatsApp = 'https://api.whatsapp.com/send?phone=5522997886941';
-String urlSite = "https://valedasflores.com/";
+String urlSite = "https://valedasflores.com";
