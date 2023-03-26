@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/data/dados.dart';
@@ -26,26 +27,36 @@ class _FotosState extends State<Fotos> {
     List imagem = dados.pegarGaleria();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Fotos"),
+        title: const TextRenderer(
+          style: TextRendererStyle.header1,
+          child: Text("Fotos"),
+        ),
         centerTitle: true,
       ),
       floatingActionButton: botao.retornaBotaoFlutuanteWhatsApp(),
       body: Center(
-          child: Column(
-        children: [
-          ImageSlideshow(
-              indicatorColor: cor1,
-              onPageChanged: (value) {
-                //debugPrint('Page changed: $value');
-              },
-              height: MediaQuery.of(context).size.height * 0.4,
-              indicatorRadius: 2,
-              autoPlayInterval: 3000,
-              isLoop: true,
-              children: dados.pegarSlideSobre()),
-          const SizedBox(height: 8),
-          Expanded(
-            child: GridView.builder(
+        child: Column(
+          children: [
+            ImageSlideshow(
+                indicatorColor: cor1,
+                onPageChanged: (value) {
+                  //debugPrint('Page changed: $value');
+                },
+                height: MediaQuery.of(context).size.height * 0.4,
+                indicatorRadius: 2,
+                autoPlayInterval: 3000,
+                isLoop: true,
+                children: dados.pegarSlideSobre()),
+            // const SizedBox(height: 8),
+            const TextRenderer(
+              style: TextRendererStyle.paragraph,
+              child: Text(
+                'Confira as fotos da nossa Pousada. Um lugar com visual deslumbrante com o conforto ideal.',
+                style: TextStyle(color: Colors.transparent),
+              ),
+            ),
+            Expanded(
+              child: GridView.builder(
                 itemCount: imagem.length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   childAspectRatio: 9 / 12,
@@ -76,10 +87,12 @@ class _FotosState extends State<Fotos> {
                       },
                     ),
                   );
-                }),
-          ),
-        ],
-      )),
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

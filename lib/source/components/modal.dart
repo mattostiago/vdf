@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/models/amenidades.dart';
 import 'package:vdf/source/models/imagem.dart';
 
@@ -42,16 +43,20 @@ class Modal {
           children: [
             Stack(
               children: [
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.9,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
-                    image: DecorationImage(
-                      image: AssetImage(imagem.imagem),
-                      fit: BoxFit.contain,
+                ImageRenderer(
+                  alt: imagem.nome,
+                  src: imagem.imagem,
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.9,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20)),
+                      image: DecorationImage(
+                        image: AssetImage(imagem.imagem),
+                        fit: BoxFit.contain,
+                      ),
                     ),
                   ),
                 ),
@@ -71,19 +76,26 @@ class Modal {
                   children: [
                     Container(
                       padding: const EdgeInsets.only(left: 4, top: 4),
-                      child: Image.asset(
-                        "assets/Logo-v-160.png",
-                        scale: 8,
+                      child: ImageRenderer(
+                        alt: 'Logo Pousada Vale das Flores',
+                        src: 'assets/Logo-v-160.png',
+                        child: Image.asset(
+                          "assets/Logo-v-160.png",
+                          scale: 8,
+                        ),
                       ),
                     ),
                     Container(
                       padding: const EdgeInsets.only(left: 4, top: 4),
-                      child: Text(
-                        imagem.nome,
-                        style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white54),
+                      child: TextRenderer(
+                        style: TextRendererStyle.header1,
+                        child: Text(
+                          imagem.nome,
+                          style: const TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white54),
+                        ),
                       ),
                     ),
                   ],
@@ -179,19 +191,25 @@ class Modal {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(18),
-                      child: Text(
-                        amenidade.nome,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      child: TextRenderer(
+                        style: TextRendererStyle.header1,
+                        child: Text(
+                          amenidade.nome,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     )
                   ],
                 ),
-                Text(
-                  amenidade.descricao,
-                  textAlign: TextAlign.center,
+                TextRenderer(
+                  style: TextRendererStyle.paragraph,
+                  child: Text(
+                    amenidade.descricao,
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),
@@ -245,19 +263,25 @@ class Modal {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(18),
-                      child: Text(
-                        titulo,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+                      child: TextRenderer(
+                        style: TextRendererStyle.header1,
+                        child: Text(
+                          titulo,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     )
                   ],
                 ),
-                Text(
-                  descricao,
-                  textAlign: TextAlign.center,
+                TextRenderer(
+                  style: TextRendererStyle.paragraph,
+                  child: Text(
+                    descricao,
+                    textAlign: TextAlign.center,
+                  ),
                 )
               ],
             ),

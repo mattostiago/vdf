@@ -207,7 +207,8 @@ class Dados {
           roomService,
           wifi,
         ],
-        2);
+        2,
+        "standard-plus");
     Acomodacao standard_superior = Acomodacao(
         "Standard Superior",
         "A Suíte Standard Superior é privativa e oferece todo o aconchego de uma casa de campo com uma varanda para contemplar a vista panorâmica das montanhas e da cidade . Possui 01 cama de casal 01 de solteiro ,TV ,frigobar, ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) .",
@@ -230,7 +231,8 @@ class Dados {
           vistaMontanhas,
           banheiroPrivado
         ],
-        3);
+        3,
+        "standard-superior");
 
     Acomodacao standard_economico_casal = Acomodacao(
         "Standard Econômico Casal",
@@ -238,7 +240,8 @@ class Dados {
         "Simplicidade",
         [margarida, margaridaBanheiro, gardenia, gardeniaBanheiro],
         [comVista, tv, ventilador, wifi, banheiroPrivado],
-        2);
+        2,
+        "standard-economico-casal");
 
     Acomodacao standard_superior_casal = Acomodacao(
         "Standard Superior Casal",
@@ -246,21 +249,24 @@ class Dados {
         "Com varanda",
         [violeta, geranio, banheiroGeranio],
         [comVista, smarttv, frigobar, wifi, banheiroPrivado],
-        2);
+        2,
+        "standard-superior-casal");
     Acomodacao standard_economico_triplo = Acomodacao(
         "Standard Econômico Triplo",
         "A Suíte Standard Triplo une conforto e simplicidade com uma linda vista das montanhas . Fica perto do jardim e possui uma cama de casal e 01 cama de solteiro , TV , ventilador, lençóis e toalhas. O hóspede ainda pode usufruir durante a estadia de área compartilhada com facilidades ( forno de microondas , louças, talheres) ",
         "Simplicidade",
         [margarida, margaridaBanheiro, gardenia, gardeniaBanheiro],
         [comVista, tv, ventilador, wifi, banheiroPrivado],
-        3);
+        3,
+        "standard-economico-triplo");
     Acomodacao configuracaoDiferente = Acomodacao(
         "Configuração Diferente",
         "Para uma configuração diferente, com uma quantidade de pessoas específicas, entre em contato conosco pelo Whatsapp",
         "Quantidade de pessoas",
         [fachada],
         [],
-        4);
+        4,
+        "configuracao-diferente");
 
     return [
       standard_economico_casal,
@@ -279,12 +285,14 @@ class Dados {
       "Promo1 descrição grande",
       "01 a 02/01/23",
       [porDoSol3],
+      "promo1",
     );
     Promocao promo2 = Promocao(
       "Promo2",
       "Promo2 descrição grande",
       "01 a 02/02/23",
       [cafe1],
+      "promo2",
     );
 
     return [

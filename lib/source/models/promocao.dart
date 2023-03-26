@@ -6,9 +6,11 @@ class Promocao {
     this.descricao,
     this.descricaoCurta,
     this.imagens,
+    this.urlDestino,
   );
   final String nome;
   final String descricao;
   final String? descricaoCurta;
   final List<Imagem> imagens;
+  final String urlDestino;
 }

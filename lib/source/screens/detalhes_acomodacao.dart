@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/caixa_dialogo.dart';
 import 'package:vdf/source/components/modal.dart';
@@ -72,9 +73,12 @@ class DetalhesAcomodacao extends StatelessWidget {
         foregroundColor: Colors.white,
         surfaceTintColor: Colors.black54,
         //backgroundColor: Colors.black,
-        title: Text(
-          acomodacao.nome,
-          //style: TextStyle(color: Colors.white),
+        title: TextRenderer(
+          style: TextRendererStyle.header1,
+          child: Text(
+            acomodacao.nome,
+            //style: TextStyle(color: Colors.white),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -110,13 +114,16 @@ class DetalhesAcomodacao extends StatelessWidget {
                       //  crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text(
-                          "Descrição",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
+                        const TextRenderer(
+                          style: TextRendererStyle.paragraph,
+                          child: Text(
+                            "Descrição",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
                           ),
                         ),
                         const Spacer(),
@@ -127,7 +134,10 @@ class DetalhesAcomodacao extends StatelessWidget {
                             color: Colors.amber,
                           ),
                         ),
-                        Text("Máx ${acomodacao.capacidade} pessoas"),
+                        TextRenderer(
+                            style: TextRendererStyle.paragraph,
+                            child:
+                                Text("Máx ${acomodacao.capacidade} pessoas")),
                       ],
                     ),
                   ),
@@ -138,13 +148,16 @@ class DetalhesAcomodacao extends StatelessWidget {
                       right: 12,
                     ),
                     child: Container(
-                      child: Text(
-                        acomodacao.descricao,
-                        textAlign: TextAlign.justify,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          color: Colors.black54,
-                          overflow: TextOverflow.visible,
+                      child: TextRenderer(
+                        style: TextRendererStyle.paragraph,
+                        child: Text(
+                          acomodacao.descricao,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black54,
+                            overflow: TextOverflow.visible,
+                          ),
                         ),
                       ),
                     ),
@@ -162,13 +175,16 @@ class DetalhesAcomodacao extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         acomodacao.amenidades.isNotEmpty
-                            ? const Text(
-                                "AMENIDADES",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black,
+                            ? const TextRenderer(
+                                style: TextRendererStyle.header3,
+                                child: Text(
+                                  "AMENIDADES",
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               )
                             : const Center(),
@@ -188,13 +204,16 @@ class DetalhesAcomodacao extends StatelessWidget {
                               children: const [
                                 Padding(
                                   padding: EdgeInsets.all(8),
-                                  child: Text(
-                                    "Outras acomodações",
-                                    textAlign: TextAlign.start,
-                                    style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white),
+                                  child: TextRenderer(
+                                    style: TextRendererStyle.header2,
+                                    child: Text(
+                                      "Outras acomodações",
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -219,75 +238,93 @@ class DetalhesAcomodacao extends StatelessWidget {
                                 Widget temporario;
                                 acomodacoes[index].nome != acomodacao.nome &&
                                         index < 4
-                                    ? temporario = Card(
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        elevation: 10.0,
-                                        margin: const EdgeInsets.all(10.0),
-                                        child: InkWell(
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Container(
-                                                height: 100.0,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                  image: DecorationImage(
-                                                      image: AssetImage(
-                                                          acomodacoes[index]
-                                                              .imagens[0]
-                                                              .imagem),
-                                                      fit: BoxFit.cover),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(10.0),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      acomodacoes[index].nome,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: const TextStyle(
-                                                          color:
-                                                              Colors.redAccent,
-                                                          fontWeight:
-                                                              FontWeight.w800),
-                                                    ),
-                                                    Text(
-                                                      acomodacoes[index]
-                                                          .descricaoCurta!,
-                                                      maxLines: 3,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                    ? temporario = LinkRenderer(
+                                        text: acomodacoes[index].nome,
+                                        href: urlSite +
+                                            "acomodacoes/" +
+                                            acomodacoes[index].urlDestino,
+                                        child: Card(
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
                                           ),
-                                          onTap: () {
-                                            Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        DetalhesAcomodacao(
-                                                            acomodacao:
-                                                                acomodacoes[
-                                                                    index])));
-                                          },
+                                          elevation: 10.0,
+                                          margin: const EdgeInsets.all(10.0),
+                                          child: InkWell(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  height: 100.0,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                    image: DecorationImage(
+                                                        image: AssetImage(
+                                                            acomodacoes[index]
+                                                                .imagens[0]
+                                                                .imagem),
+                                                        fit: BoxFit.cover),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsets.all(
+                                                      10.0),
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      TextRenderer(
+                                                        style: TextRendererStyle
+                                                            .paragraph,
+                                                        child: Text(
+                                                          acomodacoes[index]
+                                                              .nome,
+                                                          maxLines: 1,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          style: const TextStyle(
+                                                              color: Colors
+                                                                  .redAccent,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w800),
+                                                        ),
+                                                      ),
+                                                      TextRenderer(
+                                                        style: TextRendererStyle
+                                                            .paragraph,
+                                                        child: Text(
+                                                          acomodacoes[index]
+                                                              .descricaoCurta!,
+                                                          maxLines: 3,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
+                                                          style: const TextStyle(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            onTap: () {
+                                              Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          DetalhesAcomodacao(
+                                                              acomodacao:
+                                                                  acomodacoes[
+                                                                      index])));
+                                            },
+                                          ),
                                         ),
                                       )
                                     : temporario = Card(
@@ -324,26 +361,36 @@ class DetalhesAcomodacao extends StatelessWidget {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.start,
                                                   children: [
-                                                    Text(
-                                                      acomodacoes[tam].nome,
-                                                      maxLines: 1,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: const TextStyle(
-                                                          color:
-                                                              Colors.redAccent,
-                                                          fontWeight:
-                                                              FontWeight.w800),
+                                                    TextRenderer(
+                                                      style: TextRendererStyle
+                                                          .paragraph,
+                                                      child: Text(
+                                                        acomodacoes[tam].nome,
+                                                        maxLines: 1,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: const TextStyle(
+                                                            color: Colors
+                                                                .redAccent,
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w800),
+                                                      ),
                                                     ),
-                                                    Text(
-                                                      acomodacoes[tam]
-                                                          .descricaoCurta!,
-                                                      maxLines: 3,
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: const TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w500),
+                                                    TextRenderer(
+                                                      style: TextRendererStyle
+                                                          .paragraph,
+                                                      child: Text(
+                                                        acomodacoes[tam]
+                                                            .descricaoCurta!,
+                                                        maxLines: 3,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w500),
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

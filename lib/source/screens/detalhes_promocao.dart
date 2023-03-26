@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/caixa_dialogo.dart';
 import 'package:vdf/source/components/modal.dart';
@@ -41,9 +42,12 @@ class DetalhesPromocao extends StatelessWidget {
         foregroundColor: Colors.white,
         surfaceTintColor: Colors.black54,
         //backgroundColor: Colors.black,
-        title: Text(
-          promocao.nome,
-          //style: TextStyle(color: Colors.white),
+        title: TextRenderer(
+          style: TextRendererStyle.header1,
+          child: Text(
+            promocao.nome,
+            //style: TextStyle(color: Colors.white),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
@@ -78,13 +82,16 @@ class DetalhesPromocao extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: const [
-                        Text(
-                          "Descrição",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black87,
+                        TextRenderer(
+                          style: TextRendererStyle.header1,
+                          child: Text(
+                            "Descrição",
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black87,
+                            ),
                           ),
                         ),
                         Spacer(),
@@ -98,13 +105,16 @@ class DetalhesPromocao extends StatelessWidget {
                       right: 12,
                     ),
                     child: Container(
-                      child: Text(
-                        promocao.descricao,
-                        textAlign: TextAlign.justify,
-                        style: const TextStyle(
-                          fontSize: 11,
-                          color: Colors.black54,
-                          overflow: TextOverflow.visible,
+                      child: TextRenderer(
+                        style: TextRendererStyle.paragraph,
+                        child: Text(
+                          promocao.descricao,
+                          textAlign: TextAlign.justify,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.black54,
+                            overflow: TextOverflow.visible,
+                          ),
                         ),
                       ),
                     ),
