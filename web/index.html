@@ -61,6 +61,12 @@
 </head>
 
 <body style="overflow: hidden">
+    <script>
+        const regExp = new RegExp("bot|google|baidu|bing|msn|teoma|slurp|yandex", "i");
+        if (regExp.test(navigator.userAgent)) {
+            window.flutterWebRenderer = "html";
+        }
+    </script>
     <div id="loading_indicator" class="container">
         <img class="indicator" src="./assets/loading.gif" />
     </div>

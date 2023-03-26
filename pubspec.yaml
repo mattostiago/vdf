@@ -46,6 +46,7 @@ dependencies:
   lottie: ^2.2.0
   font_awesome_flutter: ^10.4.0
   firebase_analytics: ^10.1.6
+  seo_renderer: ^0.6.0
 
 dev_dependencies:
   flutter_test:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vdf/source/screens/home_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:vdf/source/utils/constants.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 
 void main() async {
   runApp(const MyApp());
@@ -12,24 +13,29 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('pt', 'BR'),
-        Locale('es', ''), // Spanish, no country code
-      ],
-      debugShowCheckedModeBanner: false,
-      // home: HomePage(),
-      theme: ThemeData(
-        primarySwatch: corPrimaria,
+    return RobotDetector(
+      child: MaterialApp(
+        navigatorObservers: [
+          seoRouteObserver,
+        ],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('pt', 'BR'),
+          Locale('es', ''), // Spanish, no country code
+        ],
+        debugShowCheckedModeBanner: false,
+        // home: HomePage(),
+        theme: ThemeData(
+          primarySwatch: corPrimaria,
+        ),
+        routes: {
+          '/': (context) => const HomePage(),
+        },
       ),
-      routes: {
-        '/': (context) => const HomePage(),
-      },
     );
   }
 }

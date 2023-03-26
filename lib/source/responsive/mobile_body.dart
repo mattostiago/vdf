@@ -23,7 +23,7 @@ class MyMobileBody extends StatefulWidget {
 
 class _MyMobileBodyState extends State<MyMobileBody> {
   Dados dados = Dados();
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+//  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   final List<MenuData> menu = [
     MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
