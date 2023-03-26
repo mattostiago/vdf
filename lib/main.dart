@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return RobotDetector(
       child: MaterialApp(
+        title: tituloGlobal,
         navigatorObservers: [
           seoRouteObserver,
         ],

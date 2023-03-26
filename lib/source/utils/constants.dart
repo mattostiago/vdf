@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 const nomeApp = "valedasflores";
-const tituloGlobal = "Pousada Vale das Flores";
+const tituloGlobal = "Pousada Vale das Flores | Nova Friburgo - RJ";
 /*
 Color? corPrimaria = Colors.black;
 Color? corSecundaria = Colors.blueGrey[900];
