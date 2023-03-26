@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/components/reservar.dart';
@@ -26,10 +27,10 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 //  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
   final List<MenuData> menu = [
-    MenuData(Icons.hotel, 'Acomodações', Acomodacoes()),
-    MenuData(Icons.photo, 'Fotos', Fotos()),
-    MenuData(Icons.local_attraction, 'A Pousada', Pousada()),
-    MenuData(Icons.discount, 'Promoções', Promocoes()),
+    MenuData(Icons.hotel, 'Acomodações', 'acomodacoes', Acomodacoes()),
+    MenuData(Icons.photo, 'Fotos', 'fotos', Fotos()),
+    MenuData(Icons.local_attraction, 'A Pousada', 'pousada', Pousada()),
+    MenuData(Icons.discount, 'Promoções', 'promocoes', Promocoes()),
   ];
 
   final List<String> imgList = [
@@ -88,6 +89,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                       height: (MediaQuery.of(context).size.height * 0.6) + 25,
                       child: Stack(
                         children: [
+                          //text para SEO
+                          const TextRenderer(
+                            child: Text(
+                              'Com deck panorâmico, salão de jogos, mini quadra de futebol e vôlei e muito mais. Com uma vista deslumbrante do vale. Perto de tudo, mas longe dos ruídos da cidade. Em Nova Friburgo-RJ.',
+                            ),
+                          ),
                           Container(
                             height: MediaQuery.of(context).size.height * 0.6,
                             decoration: const BoxDecoration(
@@ -140,35 +147,40 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                         mainAxisSpacing: 1.0,
                       ),
                       itemBuilder: (BuildContext context, int index) {
-                        return Card(
-                          //  color: const Color.fromARGB(255, 98, 152, 55),
-                          color: cor3,
-                          elevation: 0.9,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0)),
-                          child: InkWell(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Icon(
-                                  menu[index].icon,
-                                  size: 25,
-                                  color: Colors.white70,
-                                ),
-                                //SizedBox(height: 20),
-                                Text(
-                                  menu[index].title,
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                      fontSize: 10, color: Colors.white),
-                                )
-                              ],
+                        //LinkRederer para SEO
+                        return LinkRenderer(
+                          text: menu[index].title,
+                          href: urlSite + menu[index].urlExtensao,
+                          child: Card(
+                            //  color: const Color.fromARGB(255, 98, 152, 55),
+                            color: cor3,
+                            elevation: 0.9,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8.0)),
+                            child: InkWell(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(
+                                    menu[index].icon,
+                                    size: 25,
+                                    color: Colors.white70,
+                                  ),
+                                  //SizedBox(height: 20),
+                                  Text(
+                                    menu[index].title,
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                        fontSize: 10, color: Colors.white),
+                                  )
+                                ],
+                              ),
+                              onTap: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => menu[index].destino));
+                              },
                             ),
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => menu[index].destino));
-                            },
                           ),
                         );
                       },
@@ -261,7 +273,13 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                     ),
                                                   ),
                                                 ),
-                                                child: const Text("+ Ver mais"),
+                                                child: LinkRenderer(
+                                                    text:
+                                                        "Nova Friburgo - A Suíça Brasileira",
+                                                    href: urlSite +
+                                                        "nova-friburgo",
+                                                    child: const Text(
+                                                        "+ Ver mais")),
                                                 onPressed: () {
                                                   Navigator.of(context).push(
                                                       MaterialPageRoute(
@@ -346,7 +364,11 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                   ),
                                                 ),
                                               ),
-                                              child: const Text("+ Ver mais"),
+                                              child: LinkRenderer(
+                                                  text: "Salão de Jogos",
+                                                  href: urlSite + "jogos",
+                                                  child:
+                                                      const Text("+ Ver mais")),
                                               onPressed: () {
                                                 Navigator.of(context).push(
                                                     MaterialPageRoute(
@@ -425,7 +447,12 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                                   ),
                                                 ),
                                               ),
-                                              child: const Text("+ Ver mais"),
+                                              child: LinkRenderer(
+                                                  text: "Café da Manhã",
+                                                  href:
+                                                      urlSite + "cafe-da-manha",
+                                                  child:
+                                                      const Text("+ Ver mais")),
                                               onPressed: () {
                                                 Navigator.of(context).push(
                                                     MaterialPageRoute(
@@ -641,13 +668,16 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                                   ),
                                   const Padding(
                                     padding: EdgeInsets.only(left: 8),
-                                    child: Text(
-                                      "Pousada Vale das Flores",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
+                                    child: TextRenderer(
+                                      style: TextRendererStyle.paragraph,
+                                      child: Text(
+                                        "Pousada Vale das Flores",
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -655,13 +685,16 @@ class _MyMobileBodyState extends State<MyMobileBody> {
                               const Padding(
                                 padding: EdgeInsets.only(left: 8),
                                 child: //Text("Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-                                    Text(
-                                  "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    //fontWeight: FontWeight.w600,
-                                    color: Colors.white54,
+                                    TextRenderer(
+                                  style: TextRendererStyle.paragraph,
+                                  child: Text(
+                                    "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
+                                    textAlign: TextAlign.start,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      //fontWeight: FontWeight.w600,
+                                      color: Colors.white54,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -681,8 +714,9 @@ class _MyMobileBodyState extends State<MyMobileBody> {
 }
 
 class MenuData {
-  MenuData(this.icon, this.title, this.destino);
+  MenuData(this.icon, this.title, this.urlExtensao, this.destino);
   final IconData icon;
   final String title;
+  final String urlExtensao;
   final destino;
 }
