@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_strategy/url_strategy.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/screens/cafe_da_manha.dart';
 import 'package:vdf/source/screens/fotos.dart';
@@ -11,6 +12,7 @@ import 'package:seo_renderer/seo_renderer.dart';
 import 'package:vdf/source/utils/navigate.dart';
 
 void main() async {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
 
