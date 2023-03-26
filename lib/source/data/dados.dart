@@ -161,6 +161,24 @@ class Dados {
     return arrayWidgetsImagens;
   }
 
+  List<Widget> pegarSlideFriburgo() {
+    List<Imagem> imagens = [
+      porDoSol2,
+      cidade,
+    ];
+
+    List<Widget> arrayWidgetsImagens = [];
+    for (int i = 0; i < imagens.length; i++) {
+      arrayWidgetsImagens.add(
+        Image.asset(
+          imagens[i].imagem,
+          fit: BoxFit.cover,
+        ),
+      );
+    }
+    return arrayWidgetsImagens;
+  }
+
 //galeria
   pegarGaleria() {
     List galeria = [
