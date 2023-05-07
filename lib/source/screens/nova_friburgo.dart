@@ -9,6 +9,9 @@ import 'package:vdf/source/components/botoes.dart';
 import 'package:vdf/source/components/modal.dart';
 import 'package:vdf/source/data/dados.dart';
 import 'package:vdf/source/utils/constants.dart';
+import 'package:easy_web_view/easy_web_view.dart';
+import 'dart:ui' as ui;
+import 'dart:html' as html;
 
 class NovaFriburgo extends StatefulWidget {
   const NovaFriburgo({super.key});
@@ -32,16 +35,52 @@ class _NovaFriburgoState extends State<NovaFriburgo> {
     MenuData("assets/pousada/fachada.jpg", 'Deck', NovaFriburgo(), "pousada"),
   ];
 
+  final List<MenuData2> menu2 = [
+    MenuData2(Icons.travel_explore, 'Pontos Turísticos',
+        '/nova-friburgo/pontos-turisticos', 'pontos-turisticos'),
+    MenuData2(Icons.restaurant, 'Onde Comer', '/nova-friburgo/onde-comer',
+        'onde-comer'),
+    MenuData2(Icons.star, 'Atrativos', '/nova-friburgo/atrativos', 'atrativos'),
+  ];
+
+  void initState() {
+    super.initState();
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(
+        'pontos-turisticos',
+        (int viewId) => html.IFrameElement()
+          ..width = '400'
+          ..height = '900'
+          ..src = 'https://descubranovafriburgo.com.br/pontos-turisticos/'
+          ..style.border = 'none');
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(
+        'onde-comer',
+        (int viewId) => html.IFrameElement()
+          ..width = '400'
+          ..height = '900'
+          ..src = 'https://descubranovafriburgo.com.br/onde-comer/'
+          ..style.border = 'none');
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(
+        'atrativos',
+        (int viewId) => html.IFrameElement()
+          ..width = '400'
+          ..height = '900'
+          ..src = 'https://descubranovafriburgo.com.br/o-que-fazer/'
+          ..style.border = 'none');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      //  extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: const TextRenderer(
           style: TextRendererStyle.header1,
           child: Text("Nova Friburgo"),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xffb35bacc),
         centerTitle: true,
         elevation: 0,
       ),
@@ -54,272 +93,72 @@ class _NovaFriburgoState extends State<NovaFriburgo> {
               child: Column(
                 children: [
                   Stack(
-                    alignment: AlignmentDirectional.bottomCenter,
+                    alignment: AlignmentDirectional.topCenter,
                     children: [
-                      Column(
-                        children: [
-                          Container(
-                            height: MediaQuery.of(context).size.height * 0.7,
-                            width: MediaQuery.of(context).size.width,
-                            child: ClipRRect(
-                              child: ImageSlideshow(
-                                  indicatorColor: cor1,
-                                  onPageChanged: (value) {
-                                    //debugPrint('Page changed: $value');
-                                  },
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.4,
-                                  indicatorRadius: 2,
-                                  autoPlayInterval: 3000,
-                                  isLoop: true,
-                                  children: dados.pegarSlideFriburgo()),
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-                        ],
-                      ),
+                      LinearProgressIndicator(),
+                      SizedBox(
+                          height: MediaQuery.of(context).size.height,
+                          width: MediaQuery.of(context).size.width,
+                          child: const HtmlElementView(
+                              viewType: 'pontos-turisticos')),
                       Container(
-                        height: 52,
-                        decoration: BoxDecoration(
-                          color: cor3,
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30)),
-                          boxShadow: const [
-                            BoxShadow(
-                                color: Colors.black26,
-                                offset: Offset(0.0, 5.0),
-                                blurRadius: 6)
-                          ],
-                        ),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width,
-                              // height: 100,
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  /*
-                                  Container(
-                                    padding:
-                                        const EdgeInsets.only(left: 4, top: 15),
-                                    child: Image.asset(
-                                      "assets/Logo-v-160.png",
-                                      scale: 8,
-                                    ),
-                                  ),*/
-                                  Container(
-                                    padding: const EdgeInsets.all(12),
-                                    child: TextRenderer(
-                                      style: TextRendererStyle.header1,
-                                      child: Text(
-                                        dados.tituloSobre,
-                                        style: const TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
+                        color: Color(0xffb35bacc),
+                        //height: MediaQuery.of(context).size.height,
+                        //  width: MediaQuery.of(context).size.width,
+                        child: GridView.builder(
+                          padding: EdgeInsets.zero,
+                          shrinkWrap: true,
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: menu2.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 4 / 3,
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 5.0,
+                            mainAxisSpacing: 1.0,
+                          ),
+                          itemBuilder: (BuildContext context, int index) {
+                            //LinkRederer para SEO
+                            return LinkRenderer(
+                              text: menu2[index].title,
+                              href: urlSite,
+                              child: Card(
+                                //  color: const Color.fromARGB(255, 98, 152, 55),
+                                color: cor3,
+                                elevation: 0.9,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0)),
+                                child: InkWell(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        menu2[index].icon,
+                                        size: 25,
+                                        color: Colors.white70,
                                       ),
-                                    ),
+                                      //SizedBox(height: 20),
+                                      Text(
+                                        menu2[index].title,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            fontSize: 10, color: Colors.white),
+                                      )
+                                    ],
                                   ),
-                                ],
+                                  onTap: () {
+                                    Navigator.pop(context);
+                                    //Navigator.pushNamed(context, menu2[index].urlExtensao);
+                                  },
+                                ),
                               ),
-                            ),
-                          ],
+                            );
+                          },
                         ),
                       ),
                     ],
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(
-                        top: 10, left: 10, bottom: 20, right: 10),
-                    color: cor3,
-                    child: GridView.builder(
-                      padding: EdgeInsets.zero,
-                      shrinkWrap: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: menu.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 4,
-                        mainAxisExtent: 128,
-                      ),
-                      itemBuilder: (BuildContext context, int index) {
-                        return LinkRenderer(
-                          text: menu[index].title,
-                          href: urlSite + menu[index].urlDestino,
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
-                            ),
-                            elevation: 10.0,
-                            child: InkWell(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Stack(
-                                    alignment:
-                                        AlignmentDirectional.bottomCenter,
-                                    children: [
-                                      Container(
-                                        height: 120.0,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          image: DecorationImage(
-                                            image:
-                                                AssetImage(menu[index].imagem),
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 120.0,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(10.0),
-                                            color: Colors.black26),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.all(4),
-                                        child: Text(
-                                          menu[index].title,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              shadows: [
-                                                BoxShadow(
-                                                    color: Colors.black,
-                                                    spreadRadius: 10,
-                                                    blurRadius: 1)
-                                              ]),
-                                        ),
-                                      ),
-                                    ],
-                                  )
-                                ],
-                              ),
-                              onTap: () {
-                                modal.chamaModal(
-                                    context,
-                                    Container(
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.5,
-                                      child: Center(
-                                          child:
-                                              Text("Mais informações aqui.")),
-                                    ));
-                              },
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
-                  Container(
-                    //   color: Colors.blueAccent,
-                    padding: const EdgeInsets.all(12),
-                    child: TextRenderer(
-                      style: TextRendererStyle.paragraph,
-                      child: Text(
-                        dados.descricaoSobre,
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(fontSize: 12),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    child: Container(
-                      decoration: BoxDecoration(color: Colors.black26),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            SizedBox(
-                              height: 120,
-                              width: 120,
-                              child: Lottie.network(
-                                  "https://assets9.lottiefiles.com/packages/lf20_qjeqt7ez.json"),
-                            ),
-                            ElevatedButton(
-                                onPressed: () {
-                                  _launchUrl();
-                                },
-                                child: Container(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.6,
-                                  height: 72,
-                                  child: LinkRenderer(
-                                    text:
-                                        'Acessar o endereço da Pousada no Google Maps',
-                                    href: urlSite + "pousada",
-                                    child: const Center(
-                                      child: Text("Acessar no Google Maps"),
-                                    ),
-                                  ),
-                                ))
-                          ]),
-                    ),
-                    onTap: () => _launchUrl(),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12),
-                    child: Container(
-                        color: Colors.black87,
-                        padding:
-                            const EdgeInsets.only(left: 12, right: 75, top: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                ImageRenderer(
-                                  alt: 'Logo Pousada Vale das Flores',
-                                  child: Image.asset(
-                                    "assets/Logo-v-160.png",
-                                    scale: 8,
-                                  ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 8),
-                                  child: TextRenderer(
-                                    style: TextRendererStyle.header1,
-                                    child: Text(
-                                      "Pousada Vale das Flores",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 8),
-                              child: //Text("Telefone: (22) 9 9788-6941\nEmail: contato@valedasflores.com\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-
-                                  TextRenderer(
-                                style: TextRendererStyle.paragraph,
-                                child: Text(
-                                  "Telefone: (22) 9 9788-6941\nRua Jacir Linhares Ramos, nº 224\nBraunes - Nova Friburgo - RJ, Brasil",
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    //fontWeight: FontWeight.w600,
-                                    color: Colors.white54,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 50),
-                          ],
-                        )),
                   ),
                 ],
               ),
@@ -343,4 +182,12 @@ class MenuData {
   final String title;
   final destino;
   final String urlDestino;
+}
+
+class MenuData2 {
+  MenuData2(this.icon, this.title, this.urlExtensao, this.destino);
+  final IconData icon;
+  final String title;
+  final String urlExtensao;
+  final destino;
 }
