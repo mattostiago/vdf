@@ -20,6 +20,30 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
-        }
+        },
+        {
+            "name": "vdf web_renderer html",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "debug",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
+        },
+        {
+            "name": "vdf web_renderer html (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "args": [
+                "-d",
+                "chrome",
+                "--web-renderer",
+                "html",
+            ]
+        },
     ]
 }

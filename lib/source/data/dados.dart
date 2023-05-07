@@ -299,16 +299,16 @@ class Dados {
   pegarPromocoes() {
     //ACOMODAÇÕES
     Promocao promo1 = Promocao(
-      "Promo1",
-      "Promo1 descrição grande",
-      "01 a 02/01/23",
+      "Inverno na Serra",
+      "O clima maravilhoso do inverno com o visual encantador da serra é ideal para curtir com quem você gosta. Conheça nossos pacotes para junho e julho.",
+      "Junho e Julho/23",
       [porDoSol3],
       "promo1",
     );
     Promocao promo2 = Promocao(
-      "Promo2",
-      "Promo2 descrição grande",
-      "01 a 02/02/23",
+      "Diária com café",
+      "Além do conforto das nossas acomodações você ainda tem a oportunidade de se deliciar com o café da manhã colonial servido nas manhãs.",
+      "Café da Manhã colonial",
       [cafe1],
       "promo2",
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vdf/source/responsive/mobile_body.dart';
 import 'package:vdf/source/screens/acomodacoes.dart';
 import 'package:vdf/source/screens/cafe_da_manha.dart';
 import 'package:vdf/source/screens/fotos.dart';
@@ -10,7 +11,7 @@ import 'package:vdf/source/screens/promocoes.dart';
 
 class Navigate {
   static Map<String, Widget Function(BuildContext)> routes = {
-    '/': (context) => const HomePage(),
+    '/': (context) => const MyMobileBody(),
     '/acomodacoes': (context) => const Acomodacoes(),
     '/pousada': (context) => const Pousada(),
     '/cafe-da-manha': (context) => const CafeDaManha(),

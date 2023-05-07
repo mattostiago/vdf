@@ -26,9 +26,67 @@ class _PousadaState extends State<Pousada> {
       'https://www.google.com/maps/place/Pousada+Vale+das+Flores/@-22.2846187,-42.515241,17z/data=!3m1!4b1!4m8!3m7!1s0x978ae3ff627ffb:0xbcf22390017c4b4c!5m2!4m1!1i2!8m2!3d-22.2846236!4d-42.5151785');
 
   final List<MenuData> menu = [
-    MenuData("assets/pousada/jogos.jpg", 'Jogos', Pousada(), "jogos"),
-    MenuData("assets/pousada/cafe-1.jpg", 'Café', Pousada(), "cafe-da-manha"),
-    MenuData("assets/pousada/fachada.jpg", 'Deck', Pousada(), "pousada"),
+    MenuData(
+        "assets/pousada/jogos.jpg",
+        'Jogos',
+        Pousada(),
+        "jogos",
+        Column(
+          children: [
+            const Center(
+                child: Text(
+              "Jogos",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+            // Image.asset("assets/pousada/jogos.jpg"),
+            const Text(
+                "Com sinuca e ping-pong nossa sala de jogos conta com espaço para sua diversão."),
+            Image.asset(
+              "assets/pousada/jogos2.jpg",
+              height: 200,
+            ),
+          ],
+        )),
+    MenuData(
+        "assets/pousada/cafe-1.jpg",
+        'Café',
+        Pousada(),
+        "cafe-da-manha",
+        Column(
+          children: [
+            const Center(
+                child: Text(
+              "Café da manhã",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+            const Text(
+                "Servimos um delicioso café da manhã colonial para você começar seu dia da melhor forma."),
+            Image.asset(
+              "assets/pousada/cafe-1.jpg",
+              height: 200,
+            ),
+          ],
+        )),
+    MenuData(
+        "assets/pousada/fachada.jpg",
+        'Deck',
+        Pousada(),
+        "pousada",
+        Column(
+          children: [
+            const Center(
+                child: Text(
+              "Deck Panorâmico",
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            )),
+            const Text(
+                "No deck panorâmico você pode se reconectar com a natureza. Com um visual de tirar o fôlego para as lindas montanhas de Nova Friburgo, o pôr-do-sol é uma atração imperdível."),
+            Image.asset(
+              "assets/pousada/por-do-sol-5.jpg",
+              height: 200,
+            ),
+          ],
+        )),
   ];
 
   @override
@@ -208,9 +266,7 @@ class _PousadaState extends State<Pousada> {
                                       height:
                                           MediaQuery.of(context).size.height *
                                               0.5,
-                                      child: Center(
-                                          child:
-                                              Text("Mais informações aqui.")),
+                                      child: Center(child: menu[index].widget),
                                     ));
                               },
                             ),
@@ -337,9 +393,10 @@ class _PousadaState extends State<Pousada> {
 }
 
 class MenuData {
-  MenuData(this.imagem, this.title, this.destino, this.urlDestino);
+  MenuData(this.imagem, this.title, this.destino, this.urlDestino, this.widget);
   final String imagem;
   final String title;
   final destino;
   final String urlDestino;
+  final Widget widget;
 }
