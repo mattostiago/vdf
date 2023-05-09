@@ -126,4 +126,14 @@ class Botoes {
       ),
     );
   }
+
+  IconButton retornaBotaoSimplesWhatsApp() {
+    return IconButton(
+      icon: const FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white),
+      onPressed: () {
+        launchUrl(
+            Uri.parse('https://api.whatsapp.com/send?phone=5522997886941'));
+      },
+    );
+  }
 }
